@@ -17,7 +17,7 @@
         <input type="email" name="email" placeholder="enter your email" required><br><br>
         <input type="password" name="psword" placeholder="enter your password" required ><br><br>
         <button type="submit" name="submit">LOGIN</button> 
-        <p>forget password?<a href="reset.php" >RESET</a></p><br>
+        <p>Forget password?<a href="reset.php" >RESET</a></p><br>
         <p>Not Registered Yet? <a href="register.php">Register</a><p><br>
         </div>
     </form>

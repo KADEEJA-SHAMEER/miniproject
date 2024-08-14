@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validate() {
+            var email = document.querySelector('input[name="email"]').value;
+            var password = document.querySelector('input[name="pword"]').value;
+            var confirmPassword = document.querySelector('input[name="cpword"]').value;
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
+
+            // Validate email format
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // If all validations pass
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form action="register.php" onsubmit="return validate()" method="post">
+      <input type="text"  name="name" placeholder="enter your name" required><br>
+      <input type="email" name="email" placeholder="enter your email" required><br>
+      <input type="password" name="pword"  placeholder="enter password" required><br>
+      <input type="password" name="cpword" placeholder="confirm your password" required><br>
+      <select name="role" required>
+      <option value="job provider">select an aoption</option>
+        <option value="job provider">job provider</option>
+        <option value="job seeker">job seeker</option>
+      </select>
+      <button  type="submit" name="REGISTER" >REGISTER</button>
+</form>
+</body>
+</html>

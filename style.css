@@ -60,6 +60,9 @@ form input {
     align-items: center;
 }
 a {
-    color: #000000; /* Red */
-  }
+    color: #000000; 
+}
+p{
+    font-size: 5;
+}
   
