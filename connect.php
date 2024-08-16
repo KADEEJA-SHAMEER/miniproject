@@ -38,8 +38,8 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
     $sql="CREATE TABLE IF NOT EXISTS job_seeker(
         user_id INT(5) not null,
         job_seeker_id INT(5) PRIMARY KEY AUTO_INCREMENT,
-        company_name VARCHAR(30) NOT NULL,
-        phone_no int(10) Not null,
+        skills VARCHAR(30) NOT NULL,
+        education ENUM('High School', 'Diploma', 'Bachelor\'s Degree', ' Master\'s Degree', 'PhD', 'Other') Not null,
         FOREIGN KEY(user_id) REFERENCES users(user_id))";
         if($conn->query($sql)===FALSE){
             die("error creating table: ".$conn->error);
