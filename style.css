@@ -6,7 +6,7 @@
 body{
      font-size: medium;
      height: 100vh;
-    background-image: url('./loginimage2.jpeg');
+    background-image: url('./backgroundhome.jpg');
     background-size: cover;
 }
 button{
@@ -41,8 +41,7 @@ h1 {
     padding: 10px 0px;
 }
 form input {
-    border: none;
-    box-shadow:0 0 20px black;
+    border: 1px solid black;
     width: 70%;
     padding: 10px;
     border-radius:5px;
@@ -54,7 +53,7 @@ form input {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3px;
+    gap: 5px;
     flex-direction: column;
 }
 .form-container {
