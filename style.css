@@ -17,7 +17,12 @@ button{
     padding: 10px;
     width: 50%;
     box-shadow:0 0 20px black;
+    cursor: pointer;
 }
+button[type="submit"]:hover {
+    background-color: #0a0a0a;
+    color:white;
+  }
 form {
     height: 50%;
     padding: 10px 80px;

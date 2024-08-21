@@ -2,53 +2,30 @@
   margin: 0;
   padding: 0;
 }
+.header{
+  display:flex;
+  justify-content: space-between;
+  border-bottom: 1px;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,0.2);
+}
+.header h1{
+  width:100%;
+  margin-top: 8px;
+}
+div.header h1 a img{
+  width:16%;
+}
 
-.div3 {
-    margin: 0;
-    padding: 10px;
-    display:flex;
-    width: 100%;
-    justify-content: space-between;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.712);
-    
-  }
-  
-  .div1 {
-    background-color: #ffffff; /* Top bar background color */
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .div1 img {
-    width: 70%;
-    height: auto;
-  }
-  
-  form {
-    margin: 0;
-    padding: 0;
-    display: flex;
-  justify-content: center;
+a.button{
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor:pointer;
+  text-decoration: none;
+  margin: 16px;
 }
-    
-  
-  
-  button[type="submit"] {
-    background-color: #007bff; /* Login button background color */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-.div2{
-    display:flex;
-    justify-content: center;
+h1{
+  margin-top: 6%;
 }
-.txt1{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-  

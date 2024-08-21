@@ -16,7 +16,7 @@ if(isset($_POST['REGISTER']))
         {
                 echo "error inserting values ";
         }
-        //header("Location: /miniproject/login.php");
+        header("Location: /miniproject/login.php");
     }
     else{
         echo "<script><alert>password doesn't match re enter</alert></script>";
