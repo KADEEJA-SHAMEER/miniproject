@@ -8,12 +8,12 @@
 </head>
 <body>
     <div class="header">
-    <h1>
-    <a href="home.php">  <img src="./logo.svg" width=20%></a>
-    </h1>
-    <div >
-        <a href="login.php" class="button">LOGIN</a>
-</div> 
-    <h1> WHERE WORKS<BR>MEET FREEDOM</h1>
+       <h1>
+        <a href="home.php">  <img src="./logo.svg" width=20%></a>
+       </h1>
+       <input type="text" placeholder="Search..">
+       <a href="login.php" class="button">LOGIN</a>
+    </div>
+    <h1 class="title"> WHERE <BR>   WORKS MEET <BR>FREEDOM</h1>
 </body>
 </html>

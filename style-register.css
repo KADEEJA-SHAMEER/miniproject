@@ -1,20 +1,21 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-image: url('./backgroundhome.jpg');
+    background-size: cover;
   }
   
   form {
     width: 40%;
     margin: 40px auto;
-    background-color: #fff;
+    background-color: #fefefe;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   background-color: rgba(255, 255, 255, 0.5);
   }
   
   input[type="text"],
@@ -38,7 +39,7 @@ body {
   button[type="submit"] {
     width: 65%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #101111;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -46,7 +47,7 @@ body {
   }  
   
   button[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: #050505;
   }
   
   option[value="select an option"] {
