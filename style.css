@@ -16,7 +16,7 @@ button{
     border: none;
     padding: 10px;
     width: 50%;
-    box-shadow:0 0 20px black;
+    box-shadow:0 0 10px black;
     cursor: pointer;
 }
 button[type="submit"]:hover {
@@ -39,6 +39,7 @@ h1 {
     text-align: center;
     color: rgb(5, 5, 5);
     padding: 10px 0px;
+    margin-bottom: 5px;
 }
 form input {
     border: 1px solid black;
@@ -53,7 +54,6 @@ form input {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
     flex-direction: column;
 }
 .form-container {

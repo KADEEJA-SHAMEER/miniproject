@@ -4,14 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        function validate() {
+    var phn_no = document.getElementsByName('phn_no')[0].value;
+    
+    // Check if phone number has 10 digits
+    if (phn_no.length !== 10) {
+        alert("Phone number must be 10 digits");
+        return false;
+    }
+    
+    // Check if all characters are digits
+    if (!/^\d+$/.test(phn_no)) {
+        alert("Phone number must contain only digits");
+        return false;
+    }
+    
+    // If validation passes, return true
+    return true;
+}
+
+    </script>
 </head>
 <body>
     <h3>CREATE YOUR PROFILE</h3>
-    <form action="" method="post">
-        <input type="number" name="phn_no" placeholder="enter your phone number" required>
-        <input type="text" name="company_name" place holder="enter your company name" required>
-        <input type=""
-
+    <form action="" onsubmit="return validate()" method="post">
+        <label>Enter your company details:</label><br>
+        <input type="text" name="company_name" placeholder="enter your company name" required><br>
+        <input type="number" name="phn_no" placeholder="enter your phone number" required><br>
+        <input type="text" name="industry" placeholder="In which field your company is working" required><br>
+        <input type="text" name="address" placeholder="enter your company address"  required><br>
+        <button type="submit" name="update">Update Profile</button>
     </form>
 </body>
 </html>
+
+

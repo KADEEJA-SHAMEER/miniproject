@@ -11,7 +11,7 @@
     <div class="form-container">
     <form action="" method="post">
         <div>
-        <h1>LOGIN</H1>
+        <h1>LOGIN</h1>
         </div>
         <div class="div2">
         <input type="email" name="email" placeholder="enter your email" required><br><br>
@@ -24,3 +24,17 @@
     </div>
 </body>
 </html>
+<!-- Login script
+if ($user->loginSuccessful()) {
+    // Check first login flag
+    $firstLogin = $user->getFirstLogin();
+    if ($firstLogin) {
+        // Redirect to profile creation page
+        header('Location: create-profile.php');
+        exit;
+    } else {
+        // Redirect to dashboard or main page
+        header('Location: dashboard.php');
+        exit;
+    }
+}-->
