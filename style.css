@@ -54,11 +54,11 @@ form input {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap:5px;
     flex-direction: column;
 }
 .form-container {
     height: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
