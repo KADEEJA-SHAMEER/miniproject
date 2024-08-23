@@ -51,12 +51,12 @@ a.button {
   font-family: sans-serif;
 }
 
-/* Body Styles 
+/* Body Styles */
 body {
-  background-image: url('./backgroundhome.jpg');
+  background-image: url('./homeimage2.jpg');
   background-size: cover;
 }
-*/
+
 /* Input Styles */
 input[type=text] {
   float: right;
