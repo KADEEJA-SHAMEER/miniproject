@@ -63,11 +63,11 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
             description text not null,
             posted_date date not null,
             salary int(10) not null,
-            foreign key(phone_no) References job_provider(phone_no),
-            FOREIGN KEY(user_id) REFERENCES users(user_id))";
+            FOREIGN KEY(user_id) REFERENCES users(user_id),
+            foreign key(phone_no) References job_provider(phone_no))";
             if($conn->query($sql)===FALSE){
                 die("error creating table: ".$conn->error);
-            }*/
+            }
             $sql="CREATE TABLE IF NOT EXISTS job_application(
                 user_id INT(5) not null,
                 job_apply_id int(5) auto_increment primary key,
@@ -75,9 +75,13 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
                 apply_date date not null,
                 availabilty varchar(50) not null,
                 experience varchar(100),
-                foreign key(job_post_id) references job_posting(job_post_id),
-                FOREIGN KEY(user_id) REFERENCES users(user_id))";
-                if($conn->query($sql)===FALSE){
-                    die("error creating table: ".$conn->error);
-                }
+                FOREIGN KEY(user_id) REFERENCES users(user_id),
+                foreign key(job_post_id) references job_posting(job_post_id))";
+                if (!$conn->query($sql)) {
+                    $error = $conn->error;
+                    // Log the error and display a user-friendly message
+                    echo "Error creating table: $error";
+                }*/
+                
+                 
 ?>

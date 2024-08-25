@@ -24,7 +24,40 @@
     </div>
 </body>
 </html>
-<!-- Login script
+<?php
+require_once("connect.php");
+if (isset($_POST['submit'])){
+    $email=$_POST['email'];
+    $password=$_POST['psword'];
+    $sql="SELECT * FROM users";
+    $data=mysqli_query($conn,$sql);
+    if(!$data)
+    {
+        echo "query failed!";
+    }
+    else
+    {
+      $users = [];
+      while($row=mysqli_fetch_array($data))
+      {
+        if(($email == $row['email'])&&($password == $row['password']))
+        {
+          $users=$row;
+        }
+      }
+      if(!$users)
+      {
+         echo "<script><alert>invalid user  check the email and password you entered is correct
+           if you are not registered please register</alert></script>";
+      }
+     else 
+     {
+       echo"valid user";
+       
+    }
+}
+}
+/*Login script
 if ($user->loginSuccessful()) {
     // Check first login flag
     $firstLogin = $user->getFirstLogin();
@@ -37,4 +70,5 @@ if ($user->loginSuccessful()) {
         header('Location: dashboard.php');
         exit;
     }
-}-->
+}*/
+?>
