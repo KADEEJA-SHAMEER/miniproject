@@ -26,12 +26,13 @@
 </html>
 <?php
 require_once("connect.php");
+session_start();
 if (isset($_POST['submit'])){
     $email=$_POST['email'];
     $password=$_POST['psword'];
     $sql="SELECT * FROM users";
     $data=mysqli_query($conn,$sql);
-    if(!$data)
+    if(mysqli_num_rows($data)<0)
     {
         echo "query failed!";
     }
@@ -53,7 +54,12 @@ if (isset($_POST['submit'])){
      else 
      {
        echo"valid user";
-       
+       $sqll="SELECT * FROM `users` WHERE email='$email'";
+       $data1=mysqli_query($conn,$sqll);
+       $row=mysqli_fetch_array($data1);
+       $userid=$row['user_id'];
+       echo"$userid";
+       $_SESSION['user_id'] = $userid; 
     }
 }
 }

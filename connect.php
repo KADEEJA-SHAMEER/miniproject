@@ -52,19 +52,17 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
         if($conn->query($sql)===FALSE){
             die("error creating table: ".$conn->error);
         }
-        /*$sql="CREATE TABLE IF NOT EXISTS job_posting(
+        $sql="CREATE TABLE IF NOT EXISTS job_posting(
             user_id INT(5) not null,
             job_post_id int(5) auto_increment primary key,
             job_title varchar(20) not null,
-            phone_no int(10) not null,
             skills_required text not null,
             schedule_requirement varchar(50) not null,
             location text not null,
             description text not null,
             posted_date date not null,
             salary int(10) not null,
-            FOREIGN KEY(user_id) REFERENCES users(user_id),
-            foreign key(phone_no) References job_provider(phone_no))";
+            FOREIGN KEY(user_id) REFERENCES users(user_id))";
             if($conn->query($sql)===FALSE){
                 die("error creating table: ".$conn->error);
             }
@@ -76,12 +74,12 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
                 availabilty varchar(50) not null,
                 experience varchar(100),
                 FOREIGN KEY(user_id) REFERENCES users(user_id),
-                foreign key(job_post_id) references job_posting(job_post_id))";
+                FOREIGN KEY(job_post_id) REFERENCES job_posting(job_post_id))";
                 if (!$conn->query($sql)) {
                     $error = $conn->error;
                     // Log the error and display a user-friendly message
                     echo "Error creating table: $error";
-                }*/
+                }
                 
                  
 ?>
