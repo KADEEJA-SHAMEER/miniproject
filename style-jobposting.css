@@ -1,0 +1,55 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  background-image:url("./loginimage3.jpg");
+  background-size: cover;
+}
+
+form {
+  width: 50%;
+  align-content: center;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #000000;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 50px;
+  border: 1px solid #040404;
+  border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+  border-color: #020202;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"] {
+  width: 50%;
+  padding: 10px;
+  margin: 0px 150px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #151515;
+}
