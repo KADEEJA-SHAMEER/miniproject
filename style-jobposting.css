@@ -3,11 +3,12 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   background-image:url("./loginimage3.jpg");
+  background-attachment: fixed;
   background-size: cover;
 }
 
 form {
-  width: 50%;
+  width: 40%;
   align-content: center;
   margin: 40px auto;
   background-color: #ffffff;
@@ -25,9 +26,9 @@ h1 {
 input[type="text"],
 input[type="date"],
 input[type="number"] {
-  width: 80%;
+  width: 60%;
   padding: 10px;
-  margin: 10px 50px;
+  margin: 10px 100px;
   border: 1px solid #040404;
   border-radius: 5px;
 }
@@ -52,4 +53,9 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #151515;
+}
+textarea{
+  border-color: #020202;
+  border-radius: 5px;
+  margin:10px 80px;
 }

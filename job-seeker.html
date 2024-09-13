@@ -7,31 +7,31 @@
     <link rel="stylesheet" href="style-jobseeker.css">
 </head>
 <body>
-    <form method="psot" action="">
+    <form method="post" action="">
         <h1>CREATE YOUR PROFILE</h1>
-        <input type="date" name="dob" placeholder="enter your date of birth" required><br>
-        <label>select your gender</label><br>
-        <label>Female</label>
+        <label>Enter your date of birth:</label>
+        <input type="date" name="dob" required><br><br>
+        <label>Select your gender:</label><br>
+        <label class="lab">Female</label>
         <input type="radio" name="gender" value="female"><br>
-        <label>Male</label>
-        <input type="radio" name="gender" value="Male"><br>
-       <label>about your skills</label><br>
-       <textarea  name="skills" rows="5" cols="30"
-        placeholder="Enter here..." required></textarea><br>
-        <label>select your educational status</label>
-        <select name="education" required>High School', 'Diploma', '',
-            ' Master\'s Degree', 'PhD', 'Other
+        <label class="lab">Male</label>
+        <input type="radio" name="gender" value="Male"><br><br>
+        <label>About your skills:</label><br>
+        <textarea name="skills" rows="5" cols="30" placeholder="Enter here..." required></textarea><br><br>
+        <label>Select your educational status:</label>
+        <select name="education" required>
             <option value="High School">High school</option>
-              <option value="Diploma">Diploma</option>
-              <option value="Bachelor\'s Degree">Bachelor\'s Degree</option>
-              <option value="Master\'s Degree">Master\'s Degree</option>
-              <option value="PhD">PhD</option>
-              <option value="Other">Other</option>
-            </select><br>
-            <label>enter your addres..</label><br>
-            <textarea name="address" rols="5"cols="30" placeholder ="enter here.."required></textarea><br>
-            <input type="number" name="seeker_phno" placeholder="enter your phone number" required><br>
-            <button type="submit">SUBMIT</button>
+            <option value="Diploma">Diploma</option>
+            <option value="Bachelor's Degree">Bachelor's Degree</option>
+            <option value="Master's Degree">Master's Degree</option>
+            <option value="PhD">PhD</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+        <label>Enter your address:</label><br>
+        <textarea name="address" rows="5" cols="30" placeholder="Enter here..." required></textarea><br><br>
+        <label>Enter your phone number:</label>
+        <input type="number" name="seeker_phno" placeholder="Enter your phone number" required><br><br>
+        <button type="submit">SUBMIT</button>
     </form>
 </body>
 </html>

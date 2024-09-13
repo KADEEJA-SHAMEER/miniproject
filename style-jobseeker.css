@@ -5,6 +5,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   background-image: url("./loginimage3.jpg");
+  background-attachment: fixed;
   background-size: cover;
 }
 
@@ -27,19 +28,19 @@ input[type="date"],
 input[type="number"] {
   width: 70%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 100px;
   border: 1px solid #000000;
   border-radius: 5px;
 }
 
 input[type="radio"] {
-  margin: 10px;
+  margin: 10px 0px;
 }
 
 textarea {
   width: 70%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 100px;
   border: 1px solid #000000;
   border-radius: 5px;
   resize: vertical;
@@ -48,13 +49,13 @@ textarea {
 select {
   width: 70%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 100px;
   border: 1px solid #030303;
   border-radius: 5px;
 }
 
 label {
-  margin: 10px;
+  margin: 10px 50px;
 }
 
 button[type="submit"] {
@@ -63,6 +64,7 @@ button[type="submit"] {
   background-color: #020202;
   color: #fff;
   border: none;
+  margin: 0px 100px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -70,4 +72,6 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #282928;
 }
-
+.lab{
+  margin-left: 100px;
+}

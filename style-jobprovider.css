@@ -4,6 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
     background-image: url("./loginimage3.jpg");
+    background-attachment: fixed;
     background-size: cover;
 }
 
@@ -59,6 +60,9 @@ button[type="submit"]:hover {
 
 input[type="text"]:focus,
 input[type="number"]:focus {
-    border-color: #aaa;
+    border-color: #070707;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+textarea{
+    border: 1px solid #000000;
 }
