@@ -73,6 +73,8 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
                 apply_date date not null,
                 availabilty varchar(50) not null,
                 experience varchar(100),
+                application_status VARCHAR(50) DEFAULT 'Pending',  -- track application status
+                review_status VARCHAR(50) DEFAULT NULL,  -- new column to track updated statu
                 FOREIGN KEY(user_id) REFERENCES users(user_id),
                 FOREIGN KEY(job_post_id) REFERENCES job_posting(job_post_id))";
                 if (!$conn->query($sql)) {
