@@ -82,6 +82,15 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
                     // Log the error and display a user-friendly message
                     echo "Error creating table: $error";
                 }
+           $sql="CREATE TABLE IF NOT EXISTS admins(
+                 admin_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+                 first_name VARCHAR(50) NOT NULL,
+                 last_name VARCHAR(50) NOT NULL,
+                 email VARCHAR(100) UNIQUE NOT NULL,
+                 password VARCHAR(255) NOT NULL,
+                 phone_number VARCHAR(20),
+                 role VARCHAR(50) DEFAULT 'Admin',
+                 )";
                 
                  
 ?>
