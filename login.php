@@ -14,7 +14,7 @@
         <label>password: </label><br>
         <input type="password" name="psword" placeholder="enter your password" required ><br><br>
         <button type="submit" name="submit">LOGIN</button> 
-        <p>Forget password?<a href="reset.php" >RESET</a></p><br>
+        <p>Forget password?<a href="reset.php" >RESET</a></p>
         <p>Not Registered Yet? <a href="register.html">Register</a><p><br>
     </form>
 </body>
@@ -71,24 +71,27 @@ session_start();
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['psword'];
+    echo $email;
+    echo $password;
 
     $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
     $data = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($data) > 0) {
-        $user = mysqli_fetch_assoc($data);
+    if (mysqli_num_rows($data) >=0) {
+        $user = mysqli_fetch_array($data);
         $_SESSION['user_id'] = $user['user_id'];
-
+        $userid=$user['user_id'];
+        echo $userid;
         // Check first login flag
         $firstLogin = $user['first_login'];
-
+        echo $firstloginl;
         if ($firstLogin) {
             // Redirect to profile creation page
-            header('Location: create-profile.php');
+            header('Location:job-provider.html');
             exit;
         } else {
             // Redirect to dashboard or main page
-            header('Location: dashboard.php');
+            header('Location: home.php');
             exit;
         }
     } else {
