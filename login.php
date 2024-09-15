@@ -20,11 +20,12 @@
 </body>
 </html>
 <?php
-/*require_once("connect.php");
+require_once("connect.php");
 session_start();
 if (isset($_POST['submit'])){
     $email=$_POST['email'];
     $password=$_POST['psword'];
+   
     $sql="SELECT * FROM users";
     $data=mysqli_query($conn,$sql);
     if(mysqli_num_rows($data)<0)
@@ -39,6 +40,7 @@ if (isset($_POST['submit'])){
         if(($email == $row['email'])&&($password == $row['password']))
         {
           $users=$row;
+          echo $email;
         }
       }
       if(!$users)
@@ -47,14 +49,21 @@ if (isset($_POST['submit'])){
            if you are not registered please register</alert></script>";
       }
      else 
-     {
-       echo"valid user";
-       $sqll="SELECT * FROM `users` WHERE email='$email'";
-       $data1=mysqli_query($conn,$sqll);
-       $row=mysqli_fetch_array($data1);
+     {  
        $userid=$row['user_id'];
-       echo"$userid";
+       echo $userid;
+       echo $email;
        $_SESSION['user_id'] = $userid; 
+        $firstLogin =$row['first_login'];
+         if ($firstLogin) {
+            // Redirect to profile creation page
+            header('Location:job-provider.html');
+            exit;
+        } else {
+            // Redirect to dashboard or main page
+            header('Location: home.php');
+            exit;
+        }
     }
 }
 }
@@ -64,8 +73,8 @@ if (isset($_POST['submit'])){
 
 
 
-<?php */
-require_once("connect.php");
+
+<!--require_once("connect.php");
 session_start();
 
 if (isset($_POST['submit'])) {
@@ -98,4 +107,4 @@ if (isset($_POST['submit'])) {
         echo "<script>alert('Invalid user. Check the email and password you entered. If you are not registered, please register.')</script>";
     }
 }
-?>
+-->
