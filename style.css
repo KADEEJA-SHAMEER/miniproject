@@ -71,12 +71,16 @@ p{
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
+  background-image: url("./loginimage3.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  
 }
 
 form {
   width: 30%;
   margin: 50px auto;
-  padding: 20px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #000000;
   border-radius: 10px;
@@ -90,7 +94,7 @@ h1 {
 
 input[type="email"],
 input[type="password"] {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #000000;
@@ -98,13 +102,14 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   background-color: #000000;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 100px;
 }
 
 button[type="submit"]:hover {
@@ -117,11 +122,11 @@ p {
 
 a {
   text-decoration: none;
-  color: #4CAF50;
+  color: #000000;
 }
 
 a:hover {
-  color: #3e8e41;
+  color: #282928;
 }
 
 

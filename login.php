@@ -9,7 +9,9 @@
 <body>
     <form action="" method="post">
         <h1>LOGIN</h1>
+        <label>Email: </label><br>
         <input type="email" name="email" placeholder="enter your email" required><br><br>
+        <label>password: </label><br>
         <input type="password" name="psword" placeholder="enter your password" required ><br><br>
         <button type="submit" name="submit">LOGIN</button> 
         <p>Forget password?<a href="reset.php" >RESET</a></p><br>
