@@ -1,16 +1,17 @@
 <?php
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="online_partTime_job_portal";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "online_partTime_job_portal";
 
-$conn=mysqli_connect("localhost","root","");
- 
-if(!$conn){
-    echo "connection failed!";
+$conn = new mysqli($servername, $username, $password);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }else{
-    echo" connected";
+    echo "connected";
 }
+
 
 $sql="CREATE DATABASE IF NOT EXISTS $dbname";
 $con_res = $conn->query($sql);
@@ -27,6 +28,9 @@ role enum('job provider','job seeker'),
 if($conn->query($sql)===FALSE){
     die("error creating table: ".$conn->error);
 }
+$sql="ALTER TABLE users AUTO_INCREMENT = 10";
+if($conn->query($sql)===FALSE){
+    die("error running the query: ".$conn->error);}
 
 $sql="CREATE TABLE IF NOT EXISTS job_provider(
     user_id INT(5) not  null,
@@ -73,24 +77,30 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
                 apply_date date not null,
                 availabilty varchar(50) not null,
                 experience varchar(100),
-                application_status VARCHAR(50) DEFAULT 'Pending',  -- track application status
-                review_status VARCHAR(50) DEFAULT NULL,  -- new column to track updated statu
+                application_status VARCHAR(50) DEFAULT 'Pending', 
+                review_status VARCHAR(50) DEFAULT NULL,  
                 FOREIGN KEY(user_id) REFERENCES users(user_id),
                 FOREIGN KEY(job_post_id) REFERENCES job_posting(job_post_id))";
                 if (!$conn->query($sql)) {
                     $error = $conn->error;
-                    // Log the error and display a user-friendly message
                     echo "Error creating table: $error";
                 }
            $sql="CREATE TABLE IF NOT EXISTS admins(
                  admin_id INT(5) AUTO_INCREMENT PRIMARY KEY,
-                 first_name VARCHAR(50) NOT NULL,
-                 last_name VARCHAR(50) NOT NULL,
+                 Name VARCHAR(50) NOT NULL,
                  email VARCHAR(100) UNIQUE NOT NULL,
                  password VARCHAR(255) NOT NULL,
                  phone_number VARCHAR(20),
-                 role VARCHAR(50) DEFAULT 'Admin',
-                 )";
-                
+                 role VARCHAR(50) DEFAULT 'Admin')";
+                 if (!$conn->query($sql)) {
+                    $error = $conn->error;
+                    echo "Error creating table: $error";
+                }
+       /*  $sql="INSERT INTO admins (Name, email, password, phone_number, role)
+          VALUES ('Kadeeja shameer', 'kadeejashameer110@gmail.com', 'ks12345#', '8129030978', 'Admin')";
+           if (!$conn->query($sql)) {
+            $error = $conn->error;
+            echo "Error running the query: $error";
+        }*/
                  
 ?>

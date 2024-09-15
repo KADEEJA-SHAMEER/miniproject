@@ -7,25 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="form-container">
     <form action="" method="post">
-        <div>
         <h1>LOGIN</h1>
-        </div>
-        <div class="div2">
         <input type="email" name="email" placeholder="enter your email" required><br><br>
         <input type="password" name="psword" placeholder="enter your password" required ><br><br>
         <button type="submit" name="submit">LOGIN</button> 
         <p>Forget password?<a href="reset.php" >RESET</a></p><br>
         <p>Not Registered Yet? <a href="register.html">Register</a><p><br>
-        </div>
     </form>
-    </div>
 </body>
 </html>
 <?php
-require_once("connect.php");
+/*require_once("connect.php");
 session_start();
 if (isset($_POST['submit'])){
     $email=$_POST['email'];
@@ -63,18 +56,41 @@ if (isset($_POST['submit'])){
     }
 }
 }
-/*Login script
-if ($user->loginSuccessful()) {
-    // Check first login flag
-    $firstLogin = $user->getFirstLogin();
-    if ($firstLogin) {
-        // Redirect to profile creation page
-        header('Location: create-profile.php');
-        exit;
+
+?>
+
+
+
+
+<?php */
+require_once("connect.php");
+session_start();
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['psword'];
+
+    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+    $data = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($data) > 0) {
+        $user = mysqli_fetch_assoc($data);
+        $_SESSION['user_id'] = $user['user_id'];
+
+        // Check first login flag
+        $firstLogin = $user['first_login'];
+
+        if ($firstLogin) {
+            // Redirect to profile creation page
+            header('Location: create-profile.php');
+            exit;
+        } else {
+            // Redirect to dashboard or main page
+            header('Location: dashboard.php');
+            exit;
+        }
     } else {
-        // Redirect to dashboard or main page
-        header('Location: dashboard.php');
-        exit;
+        echo "<script>alert('Invalid user. Check the email and password you entered. If you are not registered, please register.')</script>";
     }
-}*/
+}
 ?>
