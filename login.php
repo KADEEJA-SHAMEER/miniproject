@@ -9,10 +9,10 @@
 <body>
     <form action="" method="post">
         <h1>LOGIN</h1>
-        <label>Email: </label><br>
-        <input type="email" name="email" placeholder="enter your email" required><br><br>
-        <label>password: </label><br>
-        <input type="password" name="psword" placeholder="enter your password" required ><br><br>
+        <label>Email: </label>
+        <input type="email" name="email" placeholder="enter your email" required><br>
+        <label>password: </label>
+        <input type="password" name="psword" placeholder="enter your password" required ><br>
         <button type="submit" name="submit">LOGIN</button> 
         <p>Forget password?<a href="reset.php" >RESET</a></p>
         <p>Not Registered Yet? <a href="register.html">Register</a><p><br>
@@ -22,89 +22,62 @@
 <?php
 require_once("connect.php");
 session_start();
-if (isset($_POST['submit'])){
-    $email=$_POST['email'];
-    $password=$_POST['psword'];
-   
-    $sql="SELECT * FROM users";
-    $data=mysqli_query($conn,$sql);
-    if(mysqli_num_rows($data)<0)
-    {
-        echo "query failed!";
-    }
-    else
-    {
-      $users = [];
-      while($row=mysqli_fetch_array($data))
-      {
-        if(($email == $row['email'])&&($password == $row['password']))
-        {
-          $users=$row;
-          echo $email;
-        }
-      }
-      if(!$users)
-      {
-         echo "<script><alert>invalid user  check the email and password you entered is correct
-           if you are not registered please register</alert></script>";
-      }
-     else 
-     {  
-       $userid=$row['user_id'];
-       echo $userid;
-       echo $email;
-       $_SESSION['user_id'] = $userid; 
-        $firstLogin =$row['first_login'];
-         if ($firstLogin) {
-            // Redirect to profile creation page
-            header('Location:job-provider.html');
-            exit;
-        } else {
-            // Redirect to dashboard or main page
-            header('Location: home.php');
-            exit;
-        }
-    }
-}
-}
-
-?>
-
-
-
-
-
-<!--require_once("connect.php");
-session_start();
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['psword'];
-    echo $email;
-    echo $password;
-
     $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
     $data = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($data) >=0) {
-        $user = mysqli_fetch_array($data);
-        $_SESSION['user_id'] = $user['user_id'];
-        $userid=$user['user_id'];
-        echo $userid;
-        // Check first login flag
-        $firstLogin = $user['first_login'];
-        echo $firstloginl;
-        if ($firstLogin) {
-            // Redirect to profile creation page
-            header('Location:job-provider.html');
-            exit;
-        } else {
-            // Redirect to dashboard or main page
-            header('Location: home.php');
-            exit;
+    if (!$data) {
+        echo "no data!";
+    } 
+    else
+     {
+        $users = [];
+        while ($row = mysqli_fetch_array($data)) {
+            if (($email == $row['email']) && ($password == $row['password'])) {
+                $users = $row;
+            }
         }
-    } else {
-        echo "<script>alert('Invalid user. Check the email and password you entered. If you are not registered, please register.')</script>";
-    }
+
+        if (!$users)
+        {
+            echo "<script>alert('Invalid user. Check the email and password you entered. If you are not registered, please register.')</script>";
+        }
+        else
+        {
+            $userid = $users['user_id'];
+            $_SESSION['user_id'] = $userid;
+            $firstLogin = $users['first_login'];
+            $role=$users['role'];
+            switch ($role)
+            {
+            case 'job provider':
+                                if ($firstLogin)
+                                 {
+                                     header('Location: job-provider.html');
+                                      exit;
+                                 } else {
+                                  header('Location: home.php');
+                                     exit;
+                                 }
+                                 break;
+            case 'job seeker': 
+                                 if ($firstLogin)
+                                      {
+                                       header('Location: job-seeker.html');
+                                       exit;
+                                      } else {
+                                      header('Location: home.php');
+                                      exit;
+                                     }
+                                 break;
+            default : echo 'Unknown user role.';
+                      break;
+    
+        }
+    } 
+     }
 }
--->
+?>

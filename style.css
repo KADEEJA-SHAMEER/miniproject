@@ -71,21 +71,21 @@ p{
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
- /* background-image: url("./loginimage3.jpg");
+  background-image: url("./loginimage3.jpg");
   background-size: cover;
-  background-attachment: fixed;*/
+  background-attachment: fixed;
   
 }
 
 form {
-  width: 30%;
+  width: 25%;
   margin: 50px auto;
   padding: 3px;
   background-color: #ffffff;
   border: 1px solid #000000;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- background-color: rgba(255, 255, 255, 0.5);
+/* background-color: rgba(255, 255, 255, 0.5);*/
 }
 
 h1 {
@@ -100,7 +100,6 @@ input[type="password"] {
   margin: 10px 0px;
   border: 1px solid #000000;
   border-radius: 5px;
-  margin-left: 100px;
 }
 
 button[type="submit"] {
@@ -111,7 +110,7 @@ button[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 150px;
+  margin-left: 120px;
 }
 
 button[type="submit"]:hover {
@@ -132,7 +131,7 @@ a:hover {
   color: #282928;
 }
 label{
-  margin-left: 70px;
+  margin-left: 40px;
   font-size: 20px;
 }
 

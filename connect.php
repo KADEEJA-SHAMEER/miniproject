@@ -20,7 +20,7 @@ if(!$con_res){
 $conn->select_db($dbname);
 $sql="CREATE TABLE IF NOT EXISTS users(
 user_id INT(5) PRIMARY KEY AUTO_INCREMENT,Name  VARCHAR(20) NOT NULL ,
-email varchar(20) NOT NULL,password varchar(8) not null,
+email varchar(50) NOT NULL,password varchar(8) not null,
 role enum('job provider','job seeker'),
  first_login boolean default true )";
 if($conn->query($sql)===FALSE){
