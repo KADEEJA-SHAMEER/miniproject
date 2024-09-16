@@ -33,5 +33,18 @@ if(isset($_POST['submit']))
    {
     echo "error inserting values";
    }
+   else
+   {
+    $sql="SELECT `job_post_id`FROM  `job_posting`  WHERE  `user_id`='$user_id'";
+    $data2=mysqli_query($conn, $sql);
+    if ($row = mysqli_fetch_assoc($data2))
+     {
+        $job_post_id = $row['job_post_id'];
+        $_SESSION['job_post_id'] = $job_post_id;  
+    } else {
+        echo "No job posts found for this user.";
+    }
+    
+   }
 }
 ?>
