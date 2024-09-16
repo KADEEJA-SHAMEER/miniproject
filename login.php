@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
                                      header('Location: job-provider.html');
                                       exit;
                                  } else {
-                                  header('Location: home.php');
+                                  header('Location: job-posting.html');
                                      exit;
                                  }
                                  break;

@@ -32,10 +32,10 @@ if($conn->query($sql)===FALSE){
 
 $sql="CREATE TABLE IF NOT EXISTS job_provider(
     user_id INT(5) not  null,
-    company_name VARCHAR(30) NOT NULL,
+    company_name VARCHAR(50) NOT NULL,
     phone_no int(10) Not null,
-    industry varchar(20) not null,
-    address varchar(50) not null,
+    industry varchar(50) not null,
+    address varchar(100) not null,
     FOREIGN KEY(user_id) REFERENCES users(user_id))";
     if($conn->query($sql)===FALSE){
         die("error creating table: ".$conn->error);
@@ -57,9 +57,9 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
         $sql="CREATE TABLE IF NOT EXISTS job_posting(
             user_id INT(5) not null,
             job_post_id int(5) auto_increment primary key,
-            job_title varchar(20) not null,
+            job_title varchar(50) not null,
             skills_required text not null,
-            schedule_requirement varchar(50) not null,
+            schedule_requirement varchar(100) not null,
             location text not null,
             description text not null,
             posted_date date not null,
