@@ -45,10 +45,10 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
         user_id INT(5) not null,
         date_of_birth date not null,
         gender varchar(10) not null,
-        skills VARCHAR(30) NOT NULL,
+        skills VARCHAR(100) NOT NULL,
         education ENUM('High School', 'Diploma', 'Bachelor\'s Degree',
          ' Master\'s Degree', 'PhD', 'Other') Not null,
-         seeker_address varchar(50) not null,
+         seeker_address varchar(100) not null,
          seeker_phno int(10) not null,
         FOREIGN KEY(user_id) REFERENCES users(user_id))";
         if($conn->query($sql)===FALSE){
