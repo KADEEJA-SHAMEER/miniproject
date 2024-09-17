@@ -13,7 +13,7 @@
 
 /* Header Styles */
 .header {
-  background-color: rgb(225, 224, 237);
+  background-color:  rgb(225, 224, 237);
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;

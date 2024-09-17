@@ -7,11 +7,22 @@
     <link rel="stylesheet" href="style-dashboard.css">
 </head>
 <body>
-<div class="header">
-       <h1>
-        <a href="home.php">  <img src="./logo.svg" width=20%></a>
-       </h1>
-       <a href="register.html"><img src="./contact_9921248.png" width=10%></a>
+<div class=header>
+    <div class=logo>
+      <a href="home.php">  <img src="./logo.svg" ></a>
     </div>
+    <div class=profile>
+      <a href="job-provider.html">  <img src="./contact_9921248.png"></a>
+    </div>
+</div>
+<div class="sidebar">
+  <a href="job-posting.html" target=frame2>POST JOB</a><br>
+  <a href=job-posting.html>VIEW POSTED JOB</a><br>
+  <a href=job-posting.html>REQUESTS</a><br>
+  <a href=job-posting.html>LOG OUT</a><br>
+</div>
+<frameset >
+    <frame src="./landing-page-concept-with-people-office" name="frame2"/>
+    </frameset
 </body>
 </html>
