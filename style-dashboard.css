@@ -1,0 +1,20 @@
+.header {
+    background-color: rgb(225, 224, 237);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    /* Corrected border-bottom to include color */
+    box-shadow: 0 7px 3px -1px rgba(0, 0, 0, 0.2);
+  }
+  .header h1 {
+    width: 30%;
+    margin-top: 5px;
+  }
+.header a img{
+    width: 10%;
+    margin: 5px 0px;
+    margin-left: 40px;
+}
+.header h1 a img {
+    width: 50%;
+  } 
