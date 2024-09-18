@@ -18,7 +18,7 @@
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
   /* Corrected border-bottom to include color */
-  box-shadow: 0 7px 3px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 7px 3px -1px rgba(0, 0, 0, 0.2) ;
 }
 
 .header h1 {

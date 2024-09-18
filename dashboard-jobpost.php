@@ -21,8 +21,5 @@
   <a href=job-posting.html>REQUESTS</a><br>
   <a href=job-posting.html>LOG OUT</a><br>
 </div>
-<frameset >
-    <frame src="./landing-page-concept-with-people-office" name="frame2"/>
-    </frameset
 </body>
 </html>
