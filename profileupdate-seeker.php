@@ -50,7 +50,7 @@ function validateForm() {
 require_once("connect.php");
 session_start();
 /*$user_id= $_SESSION['user_id']; */
-$user_id=10;
+$user_id=12;
 $sql="SELECT * FROM job_seeker where user_id='$user_id'";
 $data=mysqli_query($conn,$sql);
 if($data)
@@ -63,31 +63,31 @@ else
     echo"no data retrieved";
 }
 ?>
- <form method="post" action=" " id="jobSeekerForm" onsubmit="return validatePhoneNumber()" >
+ <form method="post" action="" id="jobSeekerForm" onsubmit="return validateForm()" >
         <h1>CREATE YOUR PROFILE</h1>
         <label>Enter your date of birth:</label>
-        <input type="date" name="dob" required><br><br>
+        <input type="date" name="dob"  value="<?php echo $row['date_of_birth']; ?>" ><br><br>
         <label>Select your gender:</label><br>
         <label class="lab">Female</label>
-        <input type="radio" name="gender" value="female"><br>
+        <input type="radio" name="gender" value="female"<?php if($row['gender'] == 'female') echo 'checked'; ?>><br>
         <label class="lab">Male</label>
-        <input type="radio" name="gender" value="Male"><br><br>
+        <input type="radio" name="gender" value="Male"<?php if($row['gender'] == 'Male') echo 'checked'; ?>><br><br>
         <label>About your skills:</label><br>
-        <textarea name="skills" rows="5" cols="30" placeholder="Enter here..." required></textarea><br><br>
+        <textarea name="skills" rows="5" cols="30" ><?php echo $row['skills']; ?></textarea><br><br>
         <label>Select your educational status:</label>
         <select name="education" required>
-            <option value="High School">High school</option>
-            <option value="Diploma">Diploma</option>
-            <option value="Bachelor's Degree">Bachelor's Degree</option>
-            <option value="Master's Degree">Master's Degree</option>
-            <option value="PhD">PhD</option>
-            <option value="Other">Other</option>
+            <option value="High School" <?php if($row['education'] == 'High School') echo 'selected'; ?>>High school</option>
+            <option value="Diploma"<?php if($row['education'] == 'Diploma') echo 'selected'; ?>>Diploma</option>
+            <option value="Bachelor's Degree"<?php if($row['education'] == 'Bachelor\'s Degree') echo 'selected'; ?>>Bachelor's Degree</option>
+            <option value="Master's Degree" <?php if($row['education'] == 'Master\'s Degree') echo 'selected'; ?>>Master's Degree</option>
+            <option value="PhD" <?php if($row['education'] == 'PhD') echo 'selected'; ?>>PhD</option>
+            <option value="Other <?php if($row['education'] == 'Other') echo 'selected'; ?>">Other</option>
         </select><br><br>
         <label>Enter your address:</label><br>
-        <textarea name="address" rows="5" cols="30" placeholder="Enter here..." required></textarea><br><br>
+        <textarea name="address" rows="5" cols="30" ><?php echo $row['seeker_address']; ?></textarea><br><br>
         <label>Enter your phone number:</label>
-        <input type="number" name="seeker_phno" placeholder="Enter your phone number" required><br><br>
-        <button type="submit">SUBMIT</button>
+        <input type="number" name="seeker_phno"  value="<?php echo $row['seeker_phno']; ?>" ><br><br>
+        <button type="submit" name="submit">UPDATE PROFILE</button>
     </form>
 <?php
 if (isset($_POST['submit']))
@@ -95,15 +95,17 @@ if (isset($_POST['submit']))
    $dob = $_POST['dob'];
    $gender = $_POST['gender'];
    $skills = $_POST['skills'];
-   $education = $_POST['education'];
+   $education = mysqli_real_escape_string($conn, $_POST['education']);
    $address = $_POST['address'];
    $seeker_phno = $_POST['seeker_phno'];
-
-   $query = "INSERT INTO `job_seeker`(`user_id`, `date_of_birth`, `gender`, `skills`, `education`,
-    `seeker_address`, `seeker_phno`) VALUES ('$user_id','$dob', '$gender', '$skills', '$education', '$address',
-     '$seeker_phno')";
+   $query = "UPDATE `job_seeker` SET `date_of_birth`='$dob',
+   `gender`='$gender',`skills`='$skills',`education`='$education',`seeker_address`='$address',
+   `seeker_phno`='$seeker_phno' WHERE `user_id`='$user_id'";
    if (mysqli_query($conn, $query)) {
-       echo "Profile created successfully.";
+    header("Location: profileupdate-seeker.php");
+    exit;
+       echo "Profile updated successfully.";
+
    } else {
        echo "Error: " . mysqli_error($conn);
    }
