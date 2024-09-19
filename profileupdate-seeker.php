@@ -45,7 +45,25 @@ function validateForm() {
     </script>
 </head>
 <body>
-    <form method="post" action="job-seeker.php" id="jobSeekerForm" onsubmit="return validateForm()" >
+    
+<?php
+require_once("connect.php");
+session_start();
+/*$user_id= $_SESSION['user_id']; */
+$user_id=10;
+$sql="SELECT * FROM job_seeker where user_id='$user_id'";
+$data=mysqli_query($conn,$sql);
+if($data)
+{
+  $row=mysqli_fetch_array($data);
+  
+}
+else
+{
+    echo"no data retrieved";
+}
+?>
+ <form method="post" action=" " id="jobSeekerForm" onsubmit="return validatePhoneNumber()" >
         <h1>CREATE YOUR PROFILE</h1>
         <label>Enter your date of birth:</label>
         <input type="date" name="dob" required><br><br>
@@ -69,7 +87,27 @@ function validateForm() {
         <textarea name="address" rows="5" cols="30" placeholder="Enter here..." required></textarea><br><br>
         <label>Enter your phone number:</label>
         <input type="number" name="seeker_phno" placeholder="Enter your phone number" required><br><br>
-        <button type="submit" name="submit">SUBMIT</button>
+        <button type="submit">SUBMIT</button>
     </form>
+<?php
+if (isset($_POST['submit']))
+{
+   $dob = $_POST['dob'];
+   $gender = $_POST['gender'];
+   $skills = $_POST['skills'];
+   $education = $_POST['education'];
+   $address = $_POST['address'];
+   $seeker_phno = $_POST['seeker_phno'];
+
+   $query = "INSERT INTO `job_seeker`(`user_id`, `date_of_birth`, `gender`, `skills`, `education`,
+    `seeker_address`, `seeker_phno`) VALUES ('$user_id','$dob', '$gender', '$skills', '$education', '$address',
+     '$seeker_phno')";
+   if (mysqli_query($conn, $query)) {
+       echo "Profile created successfully.";
+   } else {
+       echo "Error: " . mysqli_error($conn);
+   }
+}
+?>
 </body>
 </html>

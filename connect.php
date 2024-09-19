@@ -20,7 +20,7 @@ if(!$con_res){
 $conn->select_db($dbname);
 $sql="CREATE TABLE IF NOT EXISTS users(
 user_id INT(5) PRIMARY KEY AUTO_INCREMENT,Name  VARCHAR(20) NOT NULL ,
-email varchar(50) NOT NULL,password varchar(8) not null,
+email varchar(50) NOT NULL,password varchar(20) not null,
 role enum('job provider','job seeker'),
  first_login boolean default true )";
 if($conn->query($sql)===FALSE){
@@ -33,7 +33,7 @@ if($conn->query($sql)===FALSE){
 $sql="CREATE TABLE IF NOT EXISTS job_provider(
     user_id INT(5) not  null,
     company_name VARCHAR(50) NOT NULL,
-    phone_no int(10) Not null,
+    phone_no VARCHAR(10) Not null,
     industry varchar(50) not null,
     address varchar(100) not null,
     FOREIGN KEY(user_id) REFERENCES users(user_id))";
@@ -49,7 +49,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
         education ENUM('High School', 'Diploma', 'Bachelor\'s Degree',
          ' Master\'s Degree', 'PhD', 'Other') Not null,
          seeker_address varchar(100) not null,
-         seeker_phno int(10) not null,
+         seeker_phno varchar(10) not null,
         FOREIGN KEY(user_id) REFERENCES users(user_id))";
         if($conn->query($sql)===FALSE){
             die("error creating table: ".$conn->error);
