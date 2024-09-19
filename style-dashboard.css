@@ -18,8 +18,8 @@ body {
   background-color:  rgb(225, 224, 237);
   color: #fff;
   padding: 10px 20px;
-  border-bottom: 1px solid #cccccc;
-  box-shadow:  0 7px 3px -1px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #000000;
+  box-shadow:  0 7px 3px -1px rgba(1, 1, 1, 0.2);
 }
 
 /* Logo Styles */
@@ -98,6 +98,13 @@ body {
 .sidebar a:hover {
   color: #ffffff;
 }
-
-
-
+input[type=text] {
+  float: right;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 110%;
+  font-size: 17px;
+}
