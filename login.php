@@ -7,34 +7,77 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="form-container">
     <form action="" method="post">
-        <div>
         <h1>LOGIN</h1>
-        </div>
-        <div class="div2">
-        <input type="email" name="email" placeholder="enter your email" required><br><br>
-        <input type="password" name="psword" placeholder="enter your password" required ><br><br>
+        <label>Email: </label>
+        <input type="email" name="email" placeholder="enter your email" required><br>
+        <label>password: </label>
+        <input type="password" name="psword" placeholder="enter your password" required ><br>
         <button type="submit" name="submit">LOGIN</button> 
-        <p>Forget password?<a href="reset.php" >RESET</a></p><br>
+        <p>Forget password?<a href="reset.php" >RESET</a></p>
         <p>Not Registered Yet? <a href="register.html">Register</a><p><br>
-        </div>
     </form>
-    </div>
 </body>
 </html>
-<!-- Login script
-if ($user->loginSuccessful()) {
-    // Check first login flag
-    $firstLogin = $user->getFirstLogin();
-    if ($firstLogin) {
-        // Redirect to profile creation page
-        header('Location: create-profile.php');
-        exit;
-    } else {
-        // Redirect to dashboard or main page
-        header('Location: dashboard.php');
-        exit;
-    }
-}-->
+<?php
+require_once("connect.php");
+session_start();
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['psword'];
+    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+    $data = mysqli_query($conn, $sql);
+
+    if (!$data) {
+        echo "no data!";
+    } 
+    else
+     {
+        $users = [];
+        while ($row = mysqli_fetch_array($data)) {
+            if (($email == $row['email']) && ($password == $row['password'])) {
+                $users = $row;
+            }
+        }
+
+        if (!$users)
+        {
+            echo "<script>alert('Invalid user. Check the email and password you entered. If you are not registered, please register.')</script>";
+        }
+        else
+        {
+            $userid = $users['user_id'];
+            $_SESSION['user_id'] = $userid;
+            $firstLogin = $users['first_login'];
+            $role=$users['role'];
+            switch ($role)
+            {
+            case 'job provider':
+                                if ($firstLogin)
+                                 {
+                                     header('Location: job-provider.html');
+                                      exit;
+                                 } else {
+                                  header('Location: dashboard-jobpost.php');
+                                     exit;
+                                 }
+                                 break;
+            case 'job seeker': 
+                                 if ($firstLogin)
+                                      {
+                                       header('Location: job-seeker.html');
+                                       exit;
+                                      } else {
+                                      header('Location: dashboard-seeker.html');
+                                      exit;
+                                     }
+                                 break;
+            default : echo 'Unknown user role.';
+                      break;
+    
+        }
+    } 
+     }
+}
+?>

@@ -1,13 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('./backgroundhome.jpg');
+    background-image: url('./loginimage3.jpg');
     background-size: cover;
   }
   
   form {
+    height: fit-content;
     width: 40%;
     margin: 40px auto;
-    background-color: #fefefe;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +25,7 @@ body {
     width: 60%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 5px;
   }
   
@@ -52,5 +53,9 @@ body {
   
   option[value="select an option"] {
     display: none;
+  }
+  form img{
+    text-align: center;
+     
   }
   

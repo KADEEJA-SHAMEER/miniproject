@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style-jobprovider.css">
     <script>
         function validate() {
     var phn_no = document.getElementsByName('phn_no')[0].value;
@@ -27,13 +28,14 @@
     </script>
 </head>
 <body>
-    <h3>CREATE YOUR PROFILE</h3>
-    <form action="" onsubmit="return validate()" method="post">
+   
+    <form action="job-provider.php" onsubmit="return validate()" method="post">
+        <h3>CREATE YOUR PROFILE</h3>
         <label>Enter your company details:</label><br>
         <input type="text" name="company_name" placeholder="enter your company name" required><br>
         <input type="number" name="phn_no" placeholder="enter your phone number" required><br>
         <input type="text" name="industry" placeholder="In which field your company is working" required><br>
-        <input type="text" name="address" placeholder="enter your company address"  required><br>
+       <textarea name="address"rows="3" cols="50" placeholder="enter your company address"  required></textarea><br>
         <button type="submit" name="update">Update Profile</button>
     </form>
 </body>

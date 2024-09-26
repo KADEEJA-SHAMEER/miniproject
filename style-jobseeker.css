@@ -1,0 +1,77 @@
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  background-image: url("./loginimage3.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+form {
+  width: 50%;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #000000;
+}
+
+input[type="date"],
+input[type="number"] {
+  width: 70%;
+  padding: 10px;
+  margin: 10px 100px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+input[type="radio"] {
+  margin: 10px 0px;
+}
+
+textarea {
+  width: 70%;
+  padding: 10px;
+  margin: 10px 100px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+select {
+  width: 70%;
+  padding: 10px;
+  margin: 10px 100px;
+  border: 1px solid #030303;
+  border-radius: 5px;
+}
+
+label {
+  margin: 10px 50px;
+}
+
+button[type="submit"] {
+  width: 70%;
+  padding: 10px;
+  background-color: #020202;
+  color: #fff;
+  border: none;
+  margin: 0px 100px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #282928;
+}
+.lab{
+  margin-left: 100px;
+}
