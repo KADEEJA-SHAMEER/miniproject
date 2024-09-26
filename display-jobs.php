@@ -8,7 +8,7 @@
  <?php
  require_once("connect.php");
  session_start();
- $user_id=12;/*$_SESSION['user_id'];*/
+ $user_id=$_SESSION['user_id'];
 $sql="SELECT * FROM job_posting ";
 $data=mysqli_query($conn,$sql);
 if(mysqli_num_rows($data)>0)

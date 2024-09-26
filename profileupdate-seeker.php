@@ -49,8 +49,7 @@ function validateForm() {
 <?php
 require_once("connect.php");
 session_start();
-/*$user_id= $_SESSION['user_id']; */
-$user_id=12;
+$user_id= $_SESSION['user_id']; 
 $sql="SELECT * FROM job_seeker where user_id='$user_id'";
 $data=mysqli_query($conn,$sql);
 if($data)

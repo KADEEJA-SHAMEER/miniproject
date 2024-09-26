@@ -27,13 +27,11 @@
 
     </script>
 </head>
-<body>
-    
+<body>   
 <?php
 require_once("connect.php");
 session_start();
-/*$user_id= $_SESSION['user_id']; */
-$user_id=10;
+$user_id= $_SESSION['user_id']; 
 $sql="SELECT * FROM job_provider where user_id='$user_id'";
 $data=mysqli_query($conn,$sql);
 if($data)
@@ -49,7 +47,7 @@ else
  <form action="" onsubmit="return validate()" method="post">
         <h3>UPDATE YOUR PROFILE</h3>
         <label>Enter your company details:</label><br>
-        <input type="text" name="company_name" value="<?php echo $row['company_name']; ?>"><br>
+        Company name:<input type="text" name="company_name" value="<?php echo $row['company_name']; ?>"><br>
         <input type="text" name="phn_no"  value="<?php echo $row['phone_no']; ?>"><br>
         <input type="text" name="industry" value="<?php echo $row['industry']; ?>"><br>
        <textarea name="address"rows="3" cols="50"><?php echo $row['address']; ?></textarea><br>
