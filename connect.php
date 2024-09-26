@@ -93,7 +93,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
                     $error = $conn->error;
                     echo "Error creating table: $error";
                 }
-       /*  $sql="INSERT INTO admins (Name, email, password, phone_number, role)
+       /* $sql="INSERT INTO admins (Name, email, password, phone_number, role)
           VALUES ('Kadeeja shameer', 'kadeejashameer110@gmail.com', 'ks12345#', '8129030978', 'Admin')";
            if (!$conn->query($sql)) {
             $error = $conn->error;
