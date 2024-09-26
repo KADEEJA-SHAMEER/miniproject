@@ -31,7 +31,7 @@
 <?php
 require_once("connect.php");
 session_start();
-$user_id= $_SESSION['user_id']; 
+$user_id=10/* $_SESSION['user_id']*/; 
 $sql="SELECT * FROM job_provider where user_id='$user_id'";
 $data=mysqli_query($conn,$sql);
 if($data)
@@ -47,10 +47,10 @@ else
  <form action="" onsubmit="return validate()" method="post">
         <h3>UPDATE YOUR PROFILE</h3>
         <label>Enter your company details:</label><br>
-        Company name:<input type="text" name="company_name" value="<?php echo $row['company_name']; ?>"><br>
-        <input type="text" name="phn_no"  value="<?php echo $row['phone_no']; ?>"><br>
-        <input type="text" name="industry" value="<?php echo $row['industry']; ?>"><br>
-       <textarea name="address"rows="3" cols="50"><?php echo $row['address']; ?></textarea><br>
+        <label>Company name:</label><input type="text" name="company_name" value="<?php echo $row['company_name']; ?>"><br>
+        <label>Phone Number:</label><input type="text" name="phn_no"  value="<?php echo $row['phone_no']; ?>"><br>
+        <label>Industry:</label><input type="text" name="industry" value="<?php echo $row['industry']; ?>"><br>
+        <label>Company address:</label><textarea name="address"rows="3" cols="50"><?php echo $row['address']; ?></textarea><br>
         <button type="submit" name="update">Update Profile</button>
     </form>
 <?php
