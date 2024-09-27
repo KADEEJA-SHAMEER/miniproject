@@ -33,7 +33,7 @@ if(isset($_POST['submit']))
    {
     echo "error inserting values";
    }
-   else
+   /*else
    {
     $sql="SELECT `job_post_id`FROM  `job_posting`  WHERE  `user_id`='$user_id'";
     $data2=mysqli_query($conn, $sql);
@@ -45,6 +45,6 @@ if(isset($_POST['submit']))
         echo "No job posts found for this user.";
     }
     
-   }
+   }*/
 }
 ?>
