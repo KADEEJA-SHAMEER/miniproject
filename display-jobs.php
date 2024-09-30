@@ -54,21 +54,26 @@ if(mysqli_num_rows($data)>0)
       <div class="job-card">
         <h2><?php echo $row['job_title']; ?></h2>
         <p>Schedule requirement: <?php echo $row['schedule_requirement']; ?></p>
+        <p>Skill required : <?php echo $row ['skills_required']; ?></p>
+        <p>Location: <?php echo $row['location']; ?></p>
+        <p> Description: <?php echo $row['description'];?></p>
+        <p> Salary: <?php echo $row['salary'];?> </p>
         <p>Posted on: <?php echo $row['posted_date']; ?></p>
         <form action="" method=post>
         <input type="hidden" name="post_id" value="<?php echo $row['job_post_id']; ?>">
-        <button type=submit name=details>View Details</button>
+        <button type=submit name=apply>Apply</button>
       </div>
     <?php } ?>
   <?php } else { ?>
     <p>No job postings found.</p>
   <?php } ?>
   <?php 
-   if(isset($_POST['details']))
-   {
-    $post_id=$_POST['job_post_id'];
-    $sql="SELECT * FROM job_posting WHERE `job_post_id`='$post_id'";
-    
-   }
+    if(isset($_POST['apply']))
+      {
+        $post_id=$_POST['post_id'];
+        $_SESSION['job_id']=$post_id;
+        header('Location: job-application.html');
+      }
+     ?>
 </body>
 </html>
