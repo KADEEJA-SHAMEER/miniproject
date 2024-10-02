@@ -44,7 +44,6 @@ if(mysqli_num_rows($data)>0)
 <?php 
     require_once("connect.php"); 
     session_start(); 
-    $user_id = 12; //$_SESSION['user_id'];
     $sql = "SELECT * FROM job_posting";
     $data = mysqli_query($conn, $sql);
   ?>
@@ -62,6 +61,7 @@ if(mysqli_num_rows($data)>0)
         <form action="" method=post>
         <input type="hidden" name="post_id" value="<?php echo $row['job_post_id']; ?>">
         <button type=submit name=apply>Apply</button>
+       </form>
       </div>
     <?php } ?>
   <?php } else { ?>
@@ -72,7 +72,7 @@ if(mysqli_num_rows($data)>0)
       {
         $post_id=$_POST['post_id'];
         $_SESSION['job_id']=$post_id;
-        header('Location: job-application.html');
+        header('Location: job-apply.php');
       }
      ?>
 </body>

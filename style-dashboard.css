@@ -15,10 +15,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:  rgb(225, 224, 237);
+  background-color:  rgb(255, 255, 255);
   color: #fff;
-  padding: 10px 20px;
-  border-bottom: 1px solid #000000;
+  padding: 8px 20px;
+  border-bottom: 3px solid #000000;
   box-shadow:  0 7px 3px -1px rgba(1, 1, 1, 0.2);
 }
 
@@ -82,7 +82,9 @@ body {
  /* z-index: 1; /* Stay on top */
  /* top: 0; /* Stay at the top */
  /* left: 0;  */
- /*background: linear-gradient(to bottom, #006699 0%, #009933 100%); *//*#b3b3b3*/;
+/*background-color: #b3b3b3;*/
+ background: linear-gradient(to bottom,  #ccffcc 0%,#ccffcc 100%); /*#b3b3b3*/;
+
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
 }
@@ -101,7 +103,7 @@ body {
 input[type=text] {
   float: right;
   padding: 7px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
