@@ -22,7 +22,6 @@
         $row = mysqli_fetch_array($data);?>
         <h2><?php echo $row['job_title']; ?></h2>
         <p>Schedule requirement: <?php echo $row['schedule_requirement']; ?></p>
-        <p>Skill required : <?php echo $row ['skills_required']; ?></p>
         <p>Location: <?php echo $row['location']; ?></p>
         <p> Description: <?php echo $row['description'];?></p>
         <p> Salary: <?php echo $row['salary'];?> </p>

@@ -58,7 +58,6 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
             user_id INT(5) not null,
             job_post_id int(5) auto_increment primary key,
             job_title varchar(50) not null,
-            skills_required text not null,
             schedule_requirement varchar(100) not null,
             location text not null,
             description text not null,

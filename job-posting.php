@@ -5,7 +5,6 @@ $user_id = $_SESSION['user_id'];
 if(isset($_POST['submit']))
 {
    $job_title=$_POST['job_title'];
-   $skills_req=$_POST['skills_req'];
    $schedule_req=$_POST['schedule_req'];
    $location=$_POST['location'];
    $description=$_POST['description'];
@@ -25,9 +24,9 @@ if(isset($_POST['submit']))
       exit;
   }*/
 
-  $query = "INSERT INTO `job_posting`(`user_id`, `job_title`, `skills_required`,
+  $query = "INSERT INTO `job_posting`(`user_id`, `job_title`,
    `schedule_requirement`, `location`, `description`, `posted_date`, `salary`) VALUES
-    ('$user_id','$job_title','$skills_req','$schedule_req','$location','$description','$post_date','$salary')";
+    ('$user_id','$job_title','$schedule_req','$location','$description','$post_date','$salary')";
    $data=mysqli_query($conn, $query);
    if(!$data)
    {
