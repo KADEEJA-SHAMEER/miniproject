@@ -16,6 +16,11 @@ form {
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 h1 {
@@ -28,7 +33,6 @@ input[type="date"],
 input[type="number"] {
   width: 60%;
   padding: 10px;
-  margin: 10px 100px;
   border: 1px solid #040404;
   border-radius: 5px;
 }
@@ -55,9 +59,9 @@ button[type="submit"]:hover {
   background-color: #151515;
 }
 textarea{
+  width: 60%;
   border-color: #020202;
   border-radius: 5px;
-  margin:10px 80px;
 }
 /* Adjust width for smaller screens */
 @media (max-width: 1024px) {
