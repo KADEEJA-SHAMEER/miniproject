@@ -14,7 +14,6 @@
         <label>password: </label><br>
         <input type="password" name="psword" placeholder="enter your password" required ><br>
         <button type="submit" name="submit">LOGIN</button> 
-        <p>Forget password?<a href="reset.php" >RESET</a></p>
         <p>Not Registered Yet? <a href="register.html">Register</a><p><br>
     </form>
 </body>

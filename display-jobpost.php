@@ -6,8 +6,8 @@
     <title>Document</title>
     <style>
     table {
-    width: 10%;
-    margin: 30px auto;
+    width: 100vw;
+    margin: 20px auto;
     border-collapse: collapse;
     border-color: black;
     border-width: 5px;
@@ -69,6 +69,15 @@
     }
     echo "</table>";
    }
+   /*if(isset($_POST['update']))
+   {
+    $job_title=$_POST['job_title'];
+    $schedule_req=$_POST['schedule_req'];
+    $location=$_POST['location'];
+    $description=$_POST['description'];
+    $post_date=$_POST['post_date'];
+    $salary=$_POST['salary'];
+   }*/
    ?>
 </body>
 </html>
