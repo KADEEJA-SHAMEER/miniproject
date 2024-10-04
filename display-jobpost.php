@@ -23,10 +23,10 @@
     padding: 2px;
     border: 2px solid #000000;
   }
-  input, textarea {
+  /*input, textarea {
   border: none;
-  outline: none;
-}
+  outline: none;*/
+
 
         </style>
 </head>
