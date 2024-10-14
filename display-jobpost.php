@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+      *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+      }
+      h1{
+        text-align:center;
+        margin-bottom:20px;
+      }
     table {
-    width: 100vw;
-    margin: 20px auto;
+    width: 100%;
+  /*  margin: 20px auto;*/
     border-collapse: collapse;
     border-color: black;
     border-width: 5px;
@@ -23,11 +32,27 @@
     padding: 2px;
     border: 2px solid #000000;
   }
-  /*input, textarea {
-  border: none;
-  outline: none;*/
-
-
+  input, textarea {
+ width:100%;
+ height:100%;
+ border:none;
+ outline:none;
+ font-size:20px;
+ text-align:center;
+  }
+button[type="submit"]{
+  width:95%;
+  padding:7px;
+  background-color:#333;
+  color:white;
+  border:none;
+  cursor:pointer;
+  margin-bottom:10px;
+  font-size:16px;
+}
+button[type="submit"]:hover{
+background-color:red;
+}
         </style>
 </head>
 <body>
