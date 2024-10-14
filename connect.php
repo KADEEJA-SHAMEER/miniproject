@@ -63,6 +63,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
             description text not null,
             posted_date date not null,
             salary int(10) not null,
+            status boolean default true,
             FOREIGN KEY(user_id) REFERENCES users(user_id))";
             if($conn->query($sql)===FALSE){
                 die("error creating table: ".$conn->error);

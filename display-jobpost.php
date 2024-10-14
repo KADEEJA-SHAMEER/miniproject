@@ -31,19 +31,20 @@
         </style>
 </head>
 <body>
-   <h1>JOBS YOU POSTED</h1>
+   
    <?php
    require_once("connect.php");
    session_start();
    $user_id = $_SESSION['user_id'];
-   $sql="SELECT * FROM job_posting WHERE user_id=$user_id";
+   $sql="SELECT * FROM job_posting WHERE user_id=$user_id AND `status`=true";
    $data=mysqli_query($conn,$sql);
    if(mysqli_num_rows($data)<=0)
    {
-    echo "<script><alert>No posted jobs found for this user</alert></script>";
+    echo "<script>alert('No posted jobs found for this user')</script>";
    }
   else
    {
+    echo "<h1>JOBS YOU POSTED</h1>";
     echo "<table border=1>";
     echo"<tr>";
     echo "<th>JOB TITLE</th>";
@@ -90,11 +91,11 @@
    if(isset($_POST['delete']))
    {
     $post_id=$_POST['post_id'];
-    $sql="DELETE FROM `job_posting` WHERE `job_post_id`='$post_id' ";
+    $sql="UPDATE `job_posting` SET `status`=false WHERE `job_post_id`='$post_id' ";
     if($conn->query($sql)===FALSE){
       die("error updating value: ".$conn->error);
   }else{
-    echo "<script>alert('POST DELETED SUCCESSFULLY')</script>";
+    echo "<script>alert('POST REMOVED SUCCESSFULLY')</script>";
   }
    }
    ?>
