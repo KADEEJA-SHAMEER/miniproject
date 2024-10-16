@@ -43,6 +43,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
 
     $sql="CREATE TABLE IF NOT EXISTS job_seeker(
         user_id INT(5) not null,
+        full_name varchar(50) not null,
         date_of_birth date not null,
         gender varchar(10) not null,
         skills VARCHAR(100) NOT NULL,
@@ -58,6 +59,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
             user_id INT(5) not null,
             job_post_id int(5) auto_increment primary key,
             job_title varchar(50) not null,
+            contact_no varchar(10) not null,
             schedule_requirement varchar(100) not null,
             location text not null,
             description text not null,
@@ -70,6 +72,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
             }
             $sql="CREATE TABLE IF NOT EXISTS job_application(
                 user_id INT(5) not null,
+                provider_id int(5) not null,
                 job_apply_id int(5) auto_increment primary key,
                 job_post_id int(5)  not null,
                 apply_date date not null,
@@ -77,6 +80,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
                 experience varchar(100),
                 application_status VARCHAR(50) DEFAULT 'Pending',  
                 FOREIGN KEY(user_id) REFERENCES users(user_id),
+                FOREIGN KEY(provider_id) REFERENCES job_provider(user_id),
                 FOREIGN KEY(job_post_id) REFERENCES job_posting(job_post_id))";
                 if (!$conn->query($sql)) {
                     $error = $conn->error;

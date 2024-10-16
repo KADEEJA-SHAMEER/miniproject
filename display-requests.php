@@ -7,8 +7,18 @@
 </head>
 <body>
     <form action="" method="post">
-      <h1>DETAILS OF POSTED JOB</h1>
+      <h1>APPLICATION FOR JOBS</h1>
       <?php
+      require_once("connect.php");
+       session_start();
+       $user_id = $_SESSION['user_id'];
+       $sql="SELECT * FROM job_application WHERE provider_id='$user_id'";
+       $data=mysqli_query($conn,$sql);
+       if($data)
+       {
+         echo "<table>";
+         echo "<th>"
+       }
        
 </body>
 </html>

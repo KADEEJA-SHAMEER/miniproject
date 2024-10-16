@@ -59,6 +59,7 @@ if(mysqli_num_rows($data)>0)
         <p>Posted on: <?php echo $row['posted_date']; ?></p>
         <form action="" method=post>
         <input type="hidden" name="post_id" value="<?php echo $row['job_post_id']; ?>">
+        <input type="hidden" name="provider_id" value="<?php echo $row['user_id']; ?>">
         <button type=submit name=apply>Apply</button>
        </form>
       </div>
@@ -69,8 +70,10 @@ if(mysqli_num_rows($data)>0)
   <?php 
     if(isset($_POST['apply']))
       {
+        $provider_id=$_POST['provider_id'];
         $post_id=$_POST['post_id'];
         $_SESSION['job_id']=$post_id;
+        $_SESSION['provider_id']=$provider_id;
         header('Location: job-apply.php');
       }
      ?>
