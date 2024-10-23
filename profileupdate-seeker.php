@@ -62,6 +62,20 @@ else
     echo"no data retrieved";
 }
 ?>
+<!--<div class="job-card">
+        <h2>YOUR PROFILE</h2>
+        <p> Name: <?php echo $row['full_name'];?></p>
+        <p>date of birth:<?php echo $row['date_of_birth']; ?></p>
+        <p>Gender: <?php echo $row['gender']; ?></p>
+        <p> Description: <?php echo $row['description'];?></p>
+        <p> Salary: <?php echo $row['salary'];?> </p>
+        <p>Posted on: <?php echo $row['posted_date']; ?></p>
+        <form action="" method=post>
+        <input type="hidden" name="post_id" value="<?php echo $row['job_post_id']; ?>">
+        <input type="hidden" name="provider_id" value="<?php echo $row['user_id']; ?>">
+        <button type=submit name=apply>Apply</button>
+       </form>
+      </div>-->
  <form method="post" action="" id="jobSeekerForm" onsubmit="return validateForm()" >
         <h1>CREATE YOUR PROFILE</h1>
         <label>Enter your date of birth:</label>
