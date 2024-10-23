@@ -22,7 +22,8 @@ $sql="CREATE TABLE IF NOT EXISTS users(
 user_id INT(5) PRIMARY KEY AUTO_INCREMENT,Name  VARCHAR(20) NOT NULL ,
 email varchar(50) NOT NULL,password varchar(20) not null,
 role enum('job provider','job seeker'),
- first_login boolean default true )";
+ first_login boolean default true,
+ user_status boolean default true )";
 if($conn->query($sql)===FALSE){
     die("error creating table: ".$conn->error);
 }
@@ -43,7 +44,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
 
     $sql="CREATE TABLE IF NOT EXISTS job_seeker(
         user_id INT(5) not null,
-        full_name varchar(50) not null,
+        full_name varchar(30) not null,
         date_of_birth date not null,
         gender varchar(10) not null,
         skills VARCHAR(100) NOT NULL,

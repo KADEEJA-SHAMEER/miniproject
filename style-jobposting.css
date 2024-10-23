@@ -20,7 +20,7 @@ form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 h1 {
@@ -62,6 +62,9 @@ textarea{
   width: 60%;
   border-color: #020202;
   border-radius: 5px;
+}
+label{
+  font-size: large;
 }
 /* Adjust width for smaller screens */
 @media (max-width: 1024px) {

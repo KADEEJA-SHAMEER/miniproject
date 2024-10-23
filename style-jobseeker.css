@@ -25,7 +25,8 @@ h1 {
 }
 
 input[type="date"],
-input[type="number"] {
+input[type="number"],
+input[type="text"] {
   width: 70%;
   padding: 10px;
   margin: 10px 100px;

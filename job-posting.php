@@ -5,6 +5,7 @@ $user_id = $_SESSION['user_id'];
 if(isset($_POST['submit']))
 {
    $job_title=$_POST['job_title'];
+   $contact_no=$_POST['contact_no'];
    $schedule_req=$_POST['schedule_req'];
    $location=$_POST['location'];
    $description=$_POST['description'];
@@ -24,26 +25,17 @@ if(isset($_POST['submit']))
       exit;
   }*/
 
-  $query = "INSERT INTO `job_posting`(`user_id`, `job_title`,
+  $query = "INSERT INTO `job_posting`(`user_id`, `job_title`,`contact_no`,
    `schedule_requirement`, `location`, `description`, `posted_date`, `salary`) VALUES
-    ('$user_id','$job_title','$schedule_req','$location','$description','$post_date','$salary')";
+    ('$user_id','$job_title','$contact_no','$schedule_req','$location','$description','$post_date','$salary')";
    $data=mysqli_query($conn, $query);
    if(!$data)
    {
     echo "error inserting values";
    }
-   /*else
+   else
    {
-    $sql="SELECT `job_post_id`FROM  `job_posting`  WHERE  `user_id`='$user_id'";
-    $data2=mysqli_query($conn, $sql);
-    if ($row = mysqli_fetch_assoc($data2))
-     {
-        $job_post_id = $row['job_post_id'];
-        $_SESSION['job_post_id'] = $job_post_id;  
-    } else {
-        echo "No job posts found for this user.";
-    }
-    
-   }*/
+    echo "<script>alert('job posted successfully')<.script>";
+   }
 }
 ?>
