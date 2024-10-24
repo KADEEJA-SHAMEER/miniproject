@@ -101,6 +101,10 @@ background-color:red;
        else{
         echo"<script>alert('No job request found for this user')</script>";
        }
+      if(isset($_POST['details']))
+      {
+        
+      }
       ?>
 </body>
 </html>
