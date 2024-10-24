@@ -62,22 +62,10 @@ else
     echo"no data retrieved";
 }
 ?>
-<!--<div class="job-card">
-        <h2>YOUR PROFILE</h2>
-        <p> Name: <?php echo $row['full_name'];?></p>
-        <p>date of birth:<?php echo $row['date_of_birth']; ?></p>
-        <p>Gender: <?php echo $row['gender']; ?></p>
-        <p> Description: <?php echo $row['description'];?></p>
-        <p> Salary: <?php echo $row['salary'];?> </p>
-        <p>Posted on: <?php echo $row['posted_date']; ?></p>
-        <form action="" method=post>
-        <input type="hidden" name="post_id" value="<?php echo $row['job_post_id']; ?>">
-        <input type="hidden" name="provider_id" value="<?php echo $row['user_id']; ?>">
-        <button type=submit name=apply>Apply</button>
-       </form>
-      </div>-->
  <form method="post" action="" id="jobSeekerForm" onsubmit="return validateForm()" >
         <h1>CREATE YOUR PROFILE</h1>
+        <label>Enter your full name: </label>
+        <input type="text" name="name" value="<?php echo $row['full_name']; ?>"><br><br>
         <label>Enter your date of birth:</label>
         <input type="date" name="dob"  value="<?php echo $row['date_of_birth']; ?>" ><br><br>
         <label>Select your gender:</label><br>
@@ -105,13 +93,14 @@ else
 <?php
 if (isset($_POST['submit']))
 {
+$name=$_POST['name'];
    $dob = $_POST['dob'];
    $gender = $_POST['gender'];
    $skills = $_POST['skills'];
    $education = mysqli_real_escape_string($conn, $_POST['education']);
    $address = $_POST['address'];
    $seeker_phno = $_POST['seeker_phno'];
-   $query = "UPDATE `job_seeker` SET `date_of_birth`='$dob',
+   $query = "UPDATE `job_seeker` SET `full_name`='$name'`date_of_birth`='$dob',
    `gender`='$gender',`skills`='$skills',`education`='$education',`seeker_address`='$address',
    `seeker_phno`='$seeker_phno' WHERE `user_id`='$user_id'";
    if (mysqli_query($conn, $query)) {

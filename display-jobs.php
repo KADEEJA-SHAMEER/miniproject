@@ -1,28 +1,3 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-
- 
- require_once("connect.php");
- session_start();
- $user_id=$_SESSION['user_id'];
-$sql="SELECT * FROM job_posting ";
-$data=mysqli_query($conn,$sql);
-if(mysqli_num_rows($data)>0)
-{
-    while($row=mysqli_fetch_array($data))
-    {
-        
-    }
-}
- ?>   
-</body>
-</html>-->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +12,15 @@ if(mysqli_num_rows($data)>0)
       padding: 20px;
       margin: 20px  300px;
       box-shadow: 0 0 10px black;
+    }
+    button[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    background-color: #101111;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     }
   </style>
 </head>
@@ -54,8 +38,9 @@ if(mysqli_num_rows($data)>0)
         <h2><?php echo $row['job_title']; ?></h2>
         <p>Schedule requirement: <?php echo $row['schedule_requirement']; ?></p>
         <p>Location: <?php echo $row['location']; ?></p>
-        <p> Description: <?php echo $row['description'];?></p>
-        <p> Salary: <?php echo $row['salary'];?> </p>
+        <p>Description: <?php echo $row['description'];?></p>
+        <p>Salary: <?php echo $row['salary'];?> </p>
+        <p>Contact no: <?php echo $row['contact_no'];?> </p>
         <p>Posted on: <?php echo $row['posted_date']; ?></p>
         <form action="" method=post>
         <input type="hidden" name="post_id" value="<?php echo $row['job_post_id']; ?>">
