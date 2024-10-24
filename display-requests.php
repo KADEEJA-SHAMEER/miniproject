@@ -103,7 +103,39 @@ background-color:red;
        }
       if(isset($_POST['details']))
       {
-        
+        $sql="SELECT * FROM job_seeker where user_id='$seeker_id'";
+        $data=mysqli_query($conn,$sql);
+        if($data)
+        {
+          $row=mysqli_fetch_array($data);
+          
+        }
+        else
+        {
+            echo"no data retrieved";
+        }
+        ?>
+        <div class="job-card">
+                <h2>APPLICANT PROFILE</h2>
+                <p> Name: <?php echo $row['full_name'];?></p>
+                <p>date of birth:<?php echo $row['date_of_birth']; ?></p>
+                <p>Gender: <?php echo $row['gender']; ?></p>
+                <p> skills: <?php echo $row['skills'];?></p>
+                <p>educational status: <?php echo $row['education']; ?></p>
+                <p>address: <?php echo $row['seeker_address']; ?></p>
+                 <p>phone no: <?php echo $row['seeker_phno']; ?></p>
+                <form action="profileupdate-seeker.php" method=post>
+                <button type=submit name=edit>edit Profile</button>
+               </form>
+              </div>
+/*$apply_id=$_POST['apply_id'];
+        $seeker_id=$_POST['seeker_id'];
+        $sql2="SELECT * FROM `job_application` WHERE  `job_apply_id`='$apply_id' and `$user_id='$seeker_id'";
+        $data3=mysqli_query($conn,$sql2);
+        if($data3)
+        {
+          $sql3="SELECT * FROM "
+        }*/
       }
       ?>
 </body>
