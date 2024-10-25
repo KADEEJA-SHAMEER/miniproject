@@ -12,10 +12,11 @@ body {
 /* Header Styles */
 
 .header {
+  height: 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:  rgb(255, 255, 255);
+  background-color: #333;
   color: #fff;
   padding: 8px 20px;
   border-bottom: 3px solid #000000;
@@ -82,7 +83,7 @@ body {
  /* z-index: 1; /* Stay on top */
  /* top: 0; /* Stay at the top */
  /* left: 0;  */
-background-color: black;
+background-color: #444;
 /* background: linear-gradient(to bottom,  #ccffcc 0%,#ccffcc 100%);*/ /*#b3b3b3*/;
 
   overflow-x: hidden; /* Disable horizontal scroll */
