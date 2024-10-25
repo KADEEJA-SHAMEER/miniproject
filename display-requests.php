@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+   <!-- <style>
       *{
         margin:0;
         padding:0;
@@ -62,6 +62,77 @@ button[type="submit"]:hover{
 background-color:red;
 }
 
+</style>-->
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color:  #f0f0f0;
+  }
+
+  h1 {
+    text-align: center;
+    color: black;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+    background-color: black;
+    color:white;
+  }
+
+  th {
+    background-color: black;
+    color:white;
+  }
+
+  .job-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .job-card h2 {
+    margin-top: 0;
+  }
+
+  .job-card p {
+    margin-bottom: 20px;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  select, input[type="text"], input[type="hidden"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
 </style>
 </head>
 <body>
@@ -97,7 +168,7 @@ background-color:red;
                     echo"<td>".$row2['full_name']."</td>";
                     echo"<td> ".$row1['job_title']."</td>";
                     echo"<td>".$row['apply_date']."</td>";
-                    echo"<form action=''method='post'>";
+                    echo"<form action='display-requests.php'method='post' target='frame2'>";
                     echo"<input type='hidden' name='apply_id'value=".$row['job_apply_id'].">";
                     echo"<input type='hidden' name='seeker_id'value=".$row['user_id'].">";
                     echo "<td><button type='submit' name='details'>View Details</button></td>";
@@ -143,17 +214,17 @@ background-color:red;
           $row3=mysqli_fetch_array($data3);
         ?>
          <h2>Employment Information</h2>
-         <p> Experience <?php echo $row1['experience'];?></p>
-         <p>Availability:<?php echo $row1['availability']; ?></p>
-         <p>applied date: <?php echo $row1['apply_date']; ?></p>
+         <p> Experience <?php echo $row3['experience'];?></p>
+         <p>Availability:<?php echo $row3['availabilty']; ?></p>
+         <p>applied date: <?php echo $row3['apply_date']; ?></p>
          <?php 
-       echo "<form action='' method='post'> 
-       <input type='hidden' name='seeker_id' value='".$row1['user_id']."'> 
+       echo "<form action='' method='post' > 
+       <input type='hidden' name='seeker_id' value='".$row3['user_id']."'> 
        <label>Application status :</label> 
        <select name='status' required> 
-       <option value='pending' ".(($row['application_status'] == 'pending') ? 'selected' : '').">PENDING</option> 
-       <option value='approved' ".(($row['application_status'] == 'approved') ? 'selected' : '').">APPROVED</option> 
-       <option value='rejected' ".(($row['application_status'] == 'rejected') ? 'selected' : '').">REJECTED</option> 
+       <option value='pending' ".(($row3['application_status'] == 'pending') ? 'selected' : '').">PENDING</option> 
+       <option value='approved' ".(($row3['application_status'] == 'approved') ? 'selected' : '').">APPROVED</option> 
+       <option value='rejected' ".(($row3['application_status'] == 'rejected') ? 'selected' : '').">REJECTED</option> 
        </select> 
        <button type='submit' name='confirm'>CONFIRM</button> 
        </form>";
