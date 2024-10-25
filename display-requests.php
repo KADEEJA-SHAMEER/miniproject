@@ -136,7 +136,7 @@ background-color:red;
                 <p>address: <?php echo $row['seeker_address']; ?></p>
                  <p>phone no: <?php echo $row['seeker_phno']; ?></p>
         <?php
-        $sql2="SELECT * FROM `job_application` WHERE  `job_apply_id`='$apply_id' and `$user_id`='$seeker_id'";
+        $sql2="SELECT * FROM `job_application` WHERE  `job_apply_id`='$apply_id' and `user_id`='$seeker_id'";
         $data3=mysqli_query($conn,$sql2);
         if($data3)
         {
