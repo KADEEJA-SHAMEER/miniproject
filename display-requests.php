@@ -10,6 +10,14 @@
         padding:0;
         box-sizing:border-box;
       }
+      .job-card {
+     width:50%;
+     border-radius:10px;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 20px  300px;
+      box-shadow: 0 0 10px black;
+    }
       h1{
         text-align:center;
         margin-bottom:20px;
@@ -53,6 +61,7 @@ button[type="submit"]{
 button[type="submit"]:hover{
 background-color:red;
 }
+
 </style>
 </head>
 <body>
@@ -103,6 +112,8 @@ background-color:red;
        }
       if(isset($_POST['details']))
       {
+        $apply_id=$_POST['apply_id'];
+        $seeker_id=$_POST['seeker_id'];
         $sql="SELECT * FROM job_seeker where user_id='$seeker_id'";
         $data=mysqli_query($conn,$sql);
         if($data)
@@ -124,18 +135,47 @@ background-color:red;
                 <p>educational status: <?php echo $row['education']; ?></p>
                 <p>address: <?php echo $row['seeker_address']; ?></p>
                  <p>phone no: <?php echo $row['seeker_phno']; ?></p>
-                <form action="profileupdate-seeker.php" method=post>
-                <button type=submit name=edit>edit Profile</button>
-               </form>
-              </div>
-/*$apply_id=$_POST['apply_id'];
-        $seeker_id=$_POST['seeker_id'];
-        $sql2="SELECT * FROM `job_application` WHERE  `job_apply_id`='$apply_id' and `$user_id='$seeker_id'";
+        <?php
+        $sql2="SELECT * FROM `job_application` WHERE  `job_apply_id`='$apply_id' and `$user_id`='$seeker_id'";
         $data3=mysqli_query($conn,$sql2);
         if($data3)
         {
-          $sql3="SELECT * FROM "
-        }*/
+          $row3=mysqli_fetch_array($data3);
+        ?>
+         <h2>Employment Information</h2>
+         <p> Experience <?php echo $row1['experience'];?></p>
+         <p>Availability:<?php echo $row1['availability']; ?></p>
+         <p>applied date: <?php echo $row1['apply_date']; ?></p>
+         <?php 
+       echo "<form action='' method='post'> 
+       <input type='hidden' name='seeker_id' value='".$row1['user_id']."'> 
+       <label>Application status :</label> 
+       <select name='status' required> 
+       <option value='pending' ".(($row['application_status'] == 'pending') ? 'selected' : '').">PENDING</option> 
+       <option value='approved' ".(($row['application_status'] == 'approved') ? 'selected' : '').">APPROVED</option> 
+       <option value='rejected' ".(($row['application_status'] == 'rejected') ? 'selected' : '').">REJECTED</option> 
+       </select> 
+       <button type='submit' name='confirm'>CONFIRM</button> 
+       </form>";
+?>
+</div>
+<?php
+        }
+        else
+        {
+            echo"no data retrieved";
+        }
+        }
+      if(isset($_POST['confirm']))
+      {
+        $seeker_id=$_POST['seeker_id'];
+        $status=$_POST['status'];
+        $sql3="UPDATE `job_application` SET `application_status`='$status' WHERE `user_id`='$seeker_id'";
+        if($conn->query($sql3)===FALSE){
+          die("error updating value: ".$conn->error);
+      }else{
+        echo "<script>alert('UPDATED SUCCESSFULLY')</script>";
+      }
       }
       ?>
 </body>
