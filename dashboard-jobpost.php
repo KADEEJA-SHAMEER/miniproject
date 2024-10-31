@@ -6,10 +6,10 @@
     <title>Document</title>
 </head>
 <frameset rows="12%,*" border="none">
-  <frame src="dashboardheader.html" >
+  <frame src="dashboardheader.html" frameborder="0" >
     <frameset cols="15%,*">
-      <frame src="sidebar.html" >
-      <frame src="main.html" name="frame2">
+      <frame src="sidebar.html"frameborder="0" >
+      <frame src="main.html" name="frame2" frameborder="0">
 </frameset>
 </frameset>
 </html>

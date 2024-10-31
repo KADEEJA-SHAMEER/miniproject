@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style-dashboard.css">
+    <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
     <div class=header>
@@ -12,7 +12,12 @@
           <a href="home.php" target="_blank">  <img src="./logo.svg" ></a>
         </div>
         <div class=profile>
-          <a href="profileupdate-provider.php" target="frame2">  <img src="./image.png"></a>
+          <a href="admin-main.php" target="frame2">Dashboard</a>
+          <a href="admin-main.php" target="frame2">Users</a>
+          <a href="admin-main.php" target="frame2">Jobs</a>
+          <form action="logout.php" method="post">
+            <button type="submit" name="logout">LOGOUT</button>
+          </form>
         </div>
     </div>
 </body>
