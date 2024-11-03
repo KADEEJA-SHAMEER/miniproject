@@ -11,6 +11,8 @@ if(isset($_POST['submit']))
    $description=$_POST['description'];
    $post_date=$_POST['post_date'];
    $salary=$_POST['salary'];
+   $schedule_type=$_POST['schedule_type'];
+   $job_type=$_POST['job_type']
 
    /* if (!preg_match('/^[a-zA-Z0-9\s]+$/', $job_title))
     {
@@ -25,9 +27,10 @@ if(isset($_POST['submit']))
       exit;
   }*/
 
-  $query = "INSERT INTO `job_posting`(`user_id`, `job_title`,`contact_no`,
-   `schedule_requirement`, `location`, `description`, `posted_date`, `salary`) VALUES
-    ('$user_id','$job_title','$contact_no','$schedule_req','$location','$description','$post_date','$salary')";
+  $query ="INSERT INTO `job_posting`(`user_id`, `job_title`, `contact_no`, `schedule_type`,
+   `job_type`, `schedule_requirement`, `location`, `description`, `posted_date`, `salary`)
+    VALUES ('$user_id','$job_title','$contact_no','$schedule_type','$job_type','$schedule_req','$location',
+    '$description','$post_date','$salary')";
    $data=mysqli_query($conn, $query);
    if(!$data)
    {

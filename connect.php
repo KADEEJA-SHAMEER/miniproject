@@ -60,7 +60,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
             job_title varchar(50) not null,
             contact_no varchar(10) not null,
             schedule_type ENUM('Evening & weekend jobs','Flexible hours') Not null,
-            job_type ENUM('Retail','Hospitality',Education','Healthcare',Education','Finance','Customer service') Not null,
+            job_type ENUM('Retail','Hospitality','Education','Healthcare','Finance','Customer service') Not null,
             schedule_requirement varchar(100) not null,
             location text not null,
             description text not null,

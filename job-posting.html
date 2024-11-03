@@ -11,6 +11,20 @@
         <h1>POST YOUR JOB HERE!!</h1>
         <label>Enter your job title</label><br>
         <input type="text" name="job_title"  required><br>
+        <label>Select the job type : </label>
+        <select name="job_type" required>
+            <option value="Retail">Retail</option>
+            <option value="Hospitality">Hospitality</option>
+            <option value="Education">Education</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Finance">Finance</option>
+            <option value="Customer Service">Customer Service</option>
+        </select><br>
+        <label>Select Schedule type for this job:</label>
+        <select name="schedule_type" required>
+            <option value="Evening & weekend jobs">Evening & weekend jobs</option>
+            <option value="Flexible hours">Flexible Hours</option>
+        </select><br>
         <label>enter the schedule for this job:</label><br>
         <textarea name="schedule_req" rows=3 cols=50  required></textarea><br>
         <label>Enter the location: </label><br>
