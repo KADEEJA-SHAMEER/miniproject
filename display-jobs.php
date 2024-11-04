@@ -6,13 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     .job-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 50%;
+  margin: 20px 300px;
+  transition: all 0.3s ease;
+}
+    /*.job-card {
      width:50%;
      border-radius:10px;
       border: 1px solid #ddd;
       padding: 20px;
       margin: 20px  300px;
       box-shadow: 0 0 10px black;
-    }
+    }*/
     button[type="submit"] {
     width: 50%;
     padding: 10px;
@@ -22,6 +32,19 @@
     border-radius: 5px;
     cursor: pointer;
     }
+    .dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+        
+
+.job-card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
   </style>
 </head>
 <body>
