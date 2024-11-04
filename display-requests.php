@@ -4,65 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   <!-- <style>
-      *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-      }
-      .job-card {
-     width:50%;
-     border-radius:10px;
-      border: 1px solid #ddd;
-      padding: 20px;
-      margin: 20px  300px;
-      box-shadow: 0 0 10px black;
-    }
-      h1{
-        text-align:center;
-        margin-bottom:20px;
-      }
-    table {
-    width: 100%;
-  /*  margin: 20px auto;*/
-    border-collapse: collapse;
-    border-color: black;
-    border-width: 5px;
-  }
-  
-  th {
-    background-color: #f0f0f0;
-    padding: 5px;
-    border: 2px solid #000000;
-  }
-  
-  td {
-    padding: 2px;
-    border: 2px solid #000000;
-  }
-  input, textarea {
- width:100%;
- height:100%;
- border:none;
- outline:none;
- font-size:20px;
- text-align:center;
-  }
-button[type="submit"]{
-  width:95%;
-  padding:7px;
-  background-color:#333;
-  color:white;
-  border:none;
-  cursor:pointer;
-  margin-bottom:10px;
-  font-size:16px;
-}
-button[type="submit"]:hover{
-background-color:red;
-}
-
-</style>-->
 <style>
   body {
     font-family: Arial, sans-serif;
