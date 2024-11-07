@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-    require_once("connect.php");
+    require_once("../connect.php");
 $job_type="Retail";
 // Query to fetch job postings based on the selected job type
 $sql = "SELECT * FROM job_posting WHERE `job_type` ='$job_type' AND status = 1"; // Only show active jobs
@@ -31,16 +31,26 @@ if ($result->num_rows > 0) {
         echo "<p><strong>Salary:</strong> $" . number_format($row['salary']) . "</p>";
         echo "<p><strong>Contact:</strong> " . htmlspecialchars($row['contact_no']) . "</p>";
         echo "<p><strong>Posted on:</strong> " . $row['posted_date'] . "</p>";
-        echo "<a href='apply.php?job_post_id=" . $row['job_post_id'] . "'>Apply Now</a>";
+        echo "<form action='' method='POST'>";
+        echo "<input type='hidden' name='job_post_id' value='" . $row['job_post_id'] . "'>";
+        echo "<input type='hidden' name='user_id' value='" . $row['user_id'] . "'>";
+        echo "<button type='submit' name='search'>Apply Now</button>";
+         echo "</form>";
         echo "</div>";
     }
     echo "</div>";
 } else {
     echo "<p>No job postings found for this job type.</p>";
 }
+if(isset($_POST['search']))
+      {
+        $provider_id=$_POST['user_id'];
+        $post_id=$_POST['job_post_id'];
+        $_SESSION['job_id']=$post_id;
+        $_SESSION['provider_id']=$provider_id;
+        header('Location: job-apply.php');
+      }
 
-$stmt->close();
-$conn->close();
 ?>
 
 </body>
