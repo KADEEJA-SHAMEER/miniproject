@@ -185,10 +185,27 @@
         $sql3="UPDATE `job_application` SET `application_status`='$status' WHERE `user_id`='$seeker_id'";
         if($conn->query($sql3)===FALSE){
           die("error updating value: ".$conn->error);
-      }else{
-        echo "<script>alert('UPDATED SUCCESSFULLY')</script>";
+      }else
+        {
+          // Create the notification message
+          $message = "";
+          if ($status == 'approved') {
+              $message = "Your job application has been APPROVED!";
+          } elseif ($status == 'rejected') {
+              $message = "Your job application has been REJECTED!";
+          }
+  
+          // Insert notification into the notifications table for the job seeker
+          $sql_notify = "INSERT INTO `notifications` (`user_id`, `message`) VALUES ('$seeker_id', '$message')";
+  
+          if ($conn->query($sql_notify) === FALSE) {
+              die("Error inserting notification: " . $conn->error);
+          }
+  
+          echo "<script>alert('UPDATED SUCCESSFULLY')</script>";
       }
       }
+      
       ?>
 </body>
 </html>

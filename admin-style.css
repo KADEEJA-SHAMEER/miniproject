@@ -112,3 +112,23 @@
     background-color: #e0e0e0; /* Background color on hover */
     color:black;
 }
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: 2px solid #007bff; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* Hover effect */
+.button:hover {
+  background-color: #0056b3; /* Darker blue */
+  color: #f8f9fa; /* Light text on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+}

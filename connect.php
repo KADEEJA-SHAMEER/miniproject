@@ -51,7 +51,8 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
          seeker_address varchar(100) not null,
          seeker_phno varchar(10) not null,
         FOREIGN KEY(user_id) REFERENCES users(user_id))";
-        if($conn->query($sql)===FALSE){
+        if($conn->query($sql)===FALSE)
+        {
             die("error creating table: ".$conn->error);
         }
         $sql="CREATE TABLE IF NOT EXISTS job_posting(
@@ -88,6 +89,17 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
                     $error = $conn->error;
                     echo "Error creating table: $error";
                 }
+        $sql="CREATE TABLE IF NOT EXISTS notifications (
+        notification_id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,  -- The user who will receive the notification
+        message TEXT NOT NULL,  -- The content of the notification
+        status ENUM('unread', 'read') DEFAULT 'unread',  -- The notification status
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- When the notification was created
+         )";
+        if (!$conn->query($sql)) {
+        $error = $conn->error;
+        echo "Error creating table: $error";
+        }
            $sql="CREATE TABLE IF NOT EXISTS admins(
                  admin_id INT(5) AUTO_INCREMENT PRIMARY KEY,
                  Name VARCHAR(50) NOT NULL,

@@ -10,8 +10,18 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.category-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
-        .card {
+.category-cards .card {
+  margin: 20px;
+}
+
+   
+.card {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -50,6 +60,11 @@
     padding: 10px;
   }
 }
+.divider {
+  border: black;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
 
 </style>
 </head>
@@ -64,26 +79,55 @@ $job_post_count = $conn->query("SELECT COUNT(*) FROM job_posting")->fetch_assoc(
 // Count job applications
 $job_application_count = $conn->query("SELECT COUNT(*) FROM job_application")->fetch_assoc()['COUNT(*)'];
 
-// Close database connection
-$conn->close();
+
+
 
 // Display counts in admin dashboard
 ?>
 
 <div class="dashboard-cards">
-    <div class="card">
-        <h2>Users</h2>
-        <p><?php echo $user_count; ?></p>
-    </div>
-    <div class="card">
-        <h2>Job Posts</h2>
-        <p><?php echo $job_post_count; ?></p>
-    </div>
-    <div class="card">
-        <h2>Job Applications</h2>
-        <p><?php echo $job_application_count; ?></p>
-    </div>
+  <div class="card">
+    <h2>Users</h2>
+    <p><?php echo $user_count; ?></p>
+  </div>
+  <div class="card">
+    <h2>Job Posts</h2>
+    <p><?php echo $job_post_count; ?></p>
+  </div>
+  <div class="card">
+    <h2>Job Applications</h2>
+    <p><?php echo $job_application_count; ?></p>
+  </div>
+  <hr class="divider">
+  <h2>JOBS AVAILABLE ON DIFFERENT CATEGORIES</h2>
+  <div class="category-cards">
+    <?php
+    $query = "SELECT job_type, COUNT(*) as count FROM job_posting GROUP BY job_type";
+    $result = $conn->query($query);
+    
+    if ($result->num_rows == 0) {
+      echo "No job postings found.";
+      // or display 0 for each category
+      $categories = array('Retail', 'Hospitality', 'Education', 'Healthcare', 'Finance', 'Customer Service');
+      foreach ($categories as $category) {
+          echo "$category: 0";
+      }
+    } else {
+      $job_category_counts = array();
+      while ($row = $result->fetch_assoc()) {
+          $job_category_counts[$row['job_type']] = $row['count'];
+      }
+    
+     foreach ($job_category_counts as $category => $count) { ?>
+      <div class="card">
+        <h2><?php echo $category; ?></h2>
+        <p><?php echo $count; ?></p>
+      </div>
+    <?php } ?>
+    <?php }?>
+  </div>
 </div>
+
 
 </body>
 </html>
