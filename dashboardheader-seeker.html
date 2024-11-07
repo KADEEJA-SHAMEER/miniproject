@@ -4,21 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      
+
+/* Icons container (Bell and Profile) */
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* Align icons to the left */
+}
+
+/* Bell Icon Styles */
+.bell-icon {
+  margin-right: 15px; /* space between bell and profile icon */
+}
+
+.bell-icon img {
+  width: 50px; /* adjust bell icon size */
+  height: auto;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+/* Profile Styles */
+.profile img {
+  width: 50px; /* adjust profile icon size */
+  height: auto;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile a {
+  text-decoration: none;
+  color: #fff;
+}
+
+    </style>
     <link rel="stylesheet" href="style-dashboard.css">
 </head>
 <body>
-    <div class=header>
-        <div class=logo>
-          <a href="home.php" target="_blank">  <img src="./logo.svg" ></a>
-        </div> 
-        <div class="search"> <input type="text" placeholder="Search..">
-</div>
-       <div class="bell-icon">
-        <a href="fetch-notifications.php"target="frame" ><img src="./bell-icon.png"></a>
-       </div>
-        <div class=profile>
-          <a href="profile-seeker.php" target="frame2">  <img src="./contact_9921248.png"></a>
+  <div class="header">
+    <div class="logo">
+        <a href="home.php" target="_blank"><img src="./logo.svg"></a>
+    </div>
+
+    <!-- Bell and Profile icons together aligned to the left -->
+    <div class="icons">
+        <div class="bell-icon">
+            <a href="fetch-notifications.php" target="frame">
+                <img src="./bell-icon.png" alt="Notifications">
+            </a>
+        </div>
+        <div class="profile">
+            <a href="profile-seeker.php" target="frame2">
+                <img src="./contact_9921248.png" alt="Profile">
+            </a>
         </div>
     </div>
+</div>
 </body>
 </html>

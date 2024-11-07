@@ -101,14 +101,3 @@ body {
   background-color: #e0e0e0; /* Background color on hover */
   color:black;
 }
-.bell-icon {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.bell-icon img{
-  width: 50px; /* adjust profile icon size */
-  height: auto;
-  border-radius: 50%;
-  cursor: pointer;;
-}
