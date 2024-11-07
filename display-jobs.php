@@ -51,7 +51,7 @@
 <?php 
     require_once("connect.php"); 
     session_start(); 
-    $sql = "SELECT * FROM job_posting WHERE `admin_status`=";
+    $sql = "SELECT * FROM job_posting WHERE `admin_status`=true";
     $data = mysqli_query($conn, $sql);
   ?>
   

@@ -73,11 +73,13 @@ background-color:red;
     echo "<table border=1>";
     echo"<tr>";
     echo "<th>JOB TITLE</th>";
+    
     echo "<th>SCHEDULE REQUIREMENT</th>";
     echo "<th>LOCATION</th>";
     echo "<th>DESCRIPTION</th>";
     echo "<th>POSTED DATE</th>";
     echo"<th>SALARY</th>";
+    echo"<th>STATUS</th>";
     echo "</tr>";
      while($row=mysqli_fetch_array($data))
      {
@@ -87,9 +89,17 @@ background-color:red;
         echo "<td><input type='text' name='jobtitle' value=".$row['job_title']."></td>";
         echo "<td><textarea name='schedule_req' rows=3 cols=50 >".$row['schedule_requirement']."</textarea></td>";
         echo "<td><textarea name='location' rows=5 cols='50'>".$row['location']."</textarea></td>";
-        echo "<td> <textarea name='description' rows=5 cols=50 >".$row['description']."</textarea></td>";
+        echo "<td><textarea name='description' rows=5 cols=50 >".$row['description']."</textarea></td>";
         echo "<td><input type='date' name='post_date' value=".$row['posted_date']."></td>";
         echo "<td> <input type='number' name='salary' value=".$row['salary']."></td>";
+        if($row['admin_status'])
+        {
+          echo "<td>APPROVED</td>";
+        }
+        else
+        {
+          echo"<td>PENDING</td>";
+        }
         echo "<td><button type=submit name=update>UPDATE</button></td>";
         echo "<td><button type=submit name=delete>DELETE</button></td>";
         echo "</tr>";

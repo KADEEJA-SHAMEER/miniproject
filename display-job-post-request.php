@@ -49,9 +49,7 @@
 </head>
 <body>
 <?php
-   require_once("connect.php");
-   session_start();
-   $user_id = $_SESSION['user_id'];
+   require_once("connect.php");   
    $sql="SELECT * FROM job_posting WHERE `status`=true";
    $data=mysqli_query($conn,$sql);
    if(mysqli_num_rows($data)<=0)
@@ -110,7 +108,7 @@
         echo"<script>alert('status updated successfully')</script>";
      }
    }
-   if(isset('remove'))
+   if(isset($_POST['remove']))
    {
     $post_id=$_POST['post_id'];
     $sql="UPDATE job_posting SET `status`=false WHERE `job_post_id`='$post_id'";
