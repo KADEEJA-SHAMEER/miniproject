@@ -9,25 +9,25 @@
 }
 
 /* Individual job item styling */
-.job-item {
-    width: 100%; /* Full width on smaller screens */
-    max-width: 350px; /* Max width for the job item */
-    background-color: #ffffff; /* White background for each job posting */
-    border: 1px solid #ddd; /* Light border around job item */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+/*.job-item {
+    width: 100%; 
+    max-width: 350px; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     padding: 20px;
-    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    transition: all 0.3s ease-in-out; 
 }
 
-.job-item:hover {
+/*.job-item:hover {
     transform: translateY(-5px); /* Lift the job item on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
+    /*box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+/*}*/
 
 /* Title of the job */
 .job-item h3 {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
     color: #333; /* Dark text for the title */
@@ -35,7 +35,7 @@
 
 /* Styling for job location */
 .job-item p {
-    font-size: 14px;
+    font-size: 20px;
     color: #666; /* Lighter text color for regular paragraphs */
     margin: 5px 0;
 }
@@ -46,23 +46,6 @@
     color: #333;
 }
 
-/* Link styling for "Apply Now" */
-.job-item a {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 15px;
-    background-color: #4CAF50; /* Green background for the apply button */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.job-item a:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
 
 /* Formatting the job item content */
 .job-item p span {
@@ -83,3 +66,38 @@
         gap: 10px; /* Reduce space between items */
     }
 }
+.job-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 50%;
+    margin: 20px 300px;
+    transition: all 0.3s ease;
+  }
+      /*.job-card {
+       width:50%;
+       border-radius:10px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px  300px;
+        box-shadow: 0 0 10px black;
+      }*/
+button[type="submit"] {
+      width: 50%;
+      padding: 10px;
+      background-color: #101111;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      }
+      
+  
+          
+  
+  .job-item:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }

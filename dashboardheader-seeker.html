@@ -20,7 +20,7 @@
 }
 
 .bell-icon img {
-  width: 50px; /* adjust bell icon size */
+  width: 40px; /* adjust bell icon size */
   height: auto;
   cursor: pointer;
   border-radius: 50%;
@@ -44,14 +44,18 @@
 
 .notification-count {
     position: absolute;
-    top: -5px;
-    right: -10px;
+    top: 5px;  /* Slightly adjust the top position */
+    right: -5px; /* Move it closer to the right edge */
     background-color: red;
     color: white;
-    border-radius: 50%;
-    padding: 2px 5px;
+    border-radius: 40%;
+    padding: 6px 6px;
     font-size: 12px;
+    min-width: 18px;  /* Ensure the count has a minimum width */
+    text-align: center; /* Center the number inside the circle */
+    line-height: 18px; /* Align the text vertically */
 }
+
 
     </style>
     <link rel="stylesheet" href="style-dashboard.css">
@@ -66,7 +70,7 @@
     <div class="icons">
       <!-- Bell Icon with Notification Count -->
       <div class="bell-icon">
-          <a href="fetch-notifications.php" target="frame">
+          <a href="fetch-notifications.php" target="frame2">
               <img src="./bell-icon.png" alt="Notifications">
               <span id="notification-count" class="notification-count"></span>
           </a>

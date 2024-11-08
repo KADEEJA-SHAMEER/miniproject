@@ -43,9 +43,10 @@ if(isset($_POST['search']))
       {
         $provider_id=$_POST['user_id'];
         $post_id=$_POST['job_post_id'];
+        sessio_start();
         $_SESSION['job_id']=$post_id;
         $_SESSION['provider_id']=$provider_id;
-        header('Location: job-apply.php');
+        header('Location: ../job-apply.php');
       }
 ?>
 

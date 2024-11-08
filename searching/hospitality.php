@@ -36,17 +36,18 @@ if ($result->num_rows > 0) {
         echo "</div>";
     }
     echo "</div>";
-} else {
-    echo "<p>No job postings found for this job type.</p>";
-}
-if(isset($_POST['search']))
+    if(isset($_POST['search']))
       {
         $provider_id=$_POST['user_id'];
         $post_id=$_POST['job_post_id'];
+        session_start();
         $_SESSION['job_id']=$post_id;
         $_SESSION['provider_id']=$provider_id;
-        header('Location: job-apply.php');
+        header('Location: ../job-apply.php');
       }
+} else {
+    echo "<p>No job postings found for this job type.</p>";
+}
 ?>
 
 </body>
