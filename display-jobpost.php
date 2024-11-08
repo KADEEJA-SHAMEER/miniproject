@@ -73,7 +73,9 @@ background-color:red;
     echo "<table border=1>";
     echo"<tr>";
     echo "<th>JOB TITLE</th>";
-    
+    echo"<th>CONTACT NO</th>";
+    echo"<th>SCHEDULE TYPE</TH>";
+    echo"<th>JOB TYPE</TH>";
     echo "<th>SCHEDULE REQUIREMENT</th>";
     echo "<th>LOCATION</th>";
     echo "<th>DESCRIPTION</th>";
@@ -87,6 +89,21 @@ background-color:red;
         echo "<input type='hidden' name='post_id' value=".$row['job_post_id'].">";
         echo"<tr>";
         echo "<td><input type='text' name='jobtitle' value=".$row['job_title']."></td>";
+        echo "<td><input type='text' name='contact_no' value=".$row['contact_no']."></td>";
+        echo "<td> 
+        <select name='schedule_type' required>
+            <option value='Evening & weekend jobs' " . ($row['schedule_type'] == 'Evening & weekend jobs' ? 'selected' : '') . ">Evening & weekend jobs</option>
+            <option value='Flexible hours' " . ($row['schedule_type'] == 'Flexible hours' ? 'selected' : '') . ">Flexible hours</option>
+         </select>
+         </td>";
+         echo '<td><select name="job_type" required>
+        <option value="Retail" ' . ($row['job_type'] == 'Retail' ? 'selected' : '') . '>Retail</option>
+        <option value="Hospitality" ' . ($row['job_type'] == 'Hospitality' ? 'selected' : '') . '>Hospitality</option>
+        <option value="Education" ' . ($row['job_type'] == 'Education' ? 'selected' : '') . '>Education</option>
+        <option value="Healthcare" ' . ($row['job_type'] == 'Healthcare' ? 'selected' : '') . '>Healthcare</option>
+        <option value="Finance" ' . ($row['job_type'] == 'Finance' ? 'selected' : '') . '>Finance</option>
+        <option value="Customer Service" ' . ($row['job_type'] == 'Customer Service' ? 'selected' : '') . '>Customer Service</option>
+      </select></td>';  
         echo "<td><textarea name='schedule_req' rows=3 cols=50 >".$row['schedule_requirement']."</textarea></td>";
         echo "<td><textarea name='location' rows=5 cols='50'>".$row['location']."</textarea></td>";
         echo "<td><textarea name='description' rows=5 cols=50 >".$row['description']."</textarea></td>";
@@ -111,14 +128,17 @@ background-color:red;
    {
     $post_id=$_POST['post_id'];
     $job_title=$_POST['jobtitle'];
+    $schedule_type=$_POST['schedule_type'];
+    $job_type=$_POST['job_type'];
+    $contact=$_POST['contact_no'];
     $schedule_req=$_POST['schedule_req'];
     $location=$_POST['location'];
     $description=$_POST['description'];
     $post_date=$_POST['post_date'];
     $salary=$_POST['salary'];
     $sql="UPDATE `job_posting` SET `job_title`='$job_title',
-    `schedule_requirement`='$schedule_req',`location`='$location',`description`='$description',
-    `posted_date`='$post_date',`salary`='$salary' WHERE `job_post_id`='$post_id'";
+    `contact_no`='$contact',`schedule_type`='$schedule_type',`job_type`='$job_type',`schedule_requirement`='$schedule_req',
+    `location`='$location',`description`='$description',`posted_date`='$post_date',`salary`='$salary' WHERE  `job_post_id`='$post_id'";
      if($conn->query($sql)===FALSE){
       die("error updating value: ".$conn->error);
   }

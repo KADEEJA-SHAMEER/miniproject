@@ -21,7 +21,10 @@
      {
         $row = mysqli_fetch_array($data);?>
         <h2><?php echo $row['job_title']; ?></h2>
+        <p>Schedule type: <?php echo $row['schedule_type']; ?></p>
         <p>Schedule requirement: <?php echo $row['schedule_requirement']; ?></p>
+        <p>job type: <?php echo $row['job_type']; ?></p>
+        <p>contact no: <?php echo $row['contact_no']; ?></p>
         <p>Location: <?php echo $row['location']; ?></p>
         <p> Description: <?php echo $row['description'];?></p>
         <p> Salary: <?php echo $row['salary'];?> </p>

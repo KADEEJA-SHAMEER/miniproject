@@ -46,22 +46,17 @@ else
 ?>
  <form action="" onsubmit="return validate()" method="post">
         <h3>UPDATE YOUR PROFILE</h3>
-        <label>Enter your company details:</label><br>
-        <label>Company name:</label><input type="text" name="company_name" value="<?php echo $row['company_name']; ?>"><br>
+        <label> name:</label><input type="text" name="name" value="<?php echo $row['name']; ?>"><br>
         <label>Phone Number:</label><input type="text" name="phn_no"  value="<?php echo $row['phone_no']; ?>"><br>
-        <label>Industry:</label><input type="text" name="industry" value="<?php echo $row['industry']; ?>"><br>
-        <label>Company address:</label><textarea name="address"rows="3" cols="50"><?php echo $row['address']; ?></textarea><br>
         <button type="submit" name="update">Update Profile</button>
     </form>
 <?php
 if(isset($_POST['update']))
 {
-    $company_name=$_POST['company_name'];
+    $name=$_POST['name'];
     $phn_no=$_POST['phn_no'];
-    $industry=$_POST['industry'];
-    $address=$_POST['address'];
 
-    $sqll = "UPDATE `job_provider` SET `company_name`='$company_name', `phone_no`='$phn_no', `industry`='$industry', `address`='$address' WHERE `user_id`='$user_id'";
+    $sqll = "UPDATE `job_provider` SET `name`='$name', `phone_no`='$phn_no'  WHERE `user_id`='$user_id'";
     $data2=mysqli_query($conn,$sqll); 
     if(!$data2)
         {

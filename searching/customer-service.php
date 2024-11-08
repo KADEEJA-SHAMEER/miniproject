@@ -11,11 +11,8 @@
     require_once("../connect.php");
 $job_type="Customer service";
 // Query to fetch job postings based on the selected job type
-$sql = "SELECT * FROM job_posting WHERE `job_type` ='$job_type' AND status = 1"; // Only show active jobs
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $job_type); // Bind the job_type parameter
-$stmt->execute();
-$result = $stmt->get_result();
+$sql = "SELECT * FROM job_posting WHERE `job_type` ='$job_type' AND `status` = 1 AND `admin_status` = 1"; // Only show active jobs
+$result=mysqli_query($conn,$sql);
 
 if ($result->num_rows > 0) {
     // Loop through the results and display each job posting

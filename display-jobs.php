@@ -51,7 +51,7 @@
 <?php 
     require_once("connect.php"); 
     session_start(); 
-    $sql = "SELECT * FROM job_posting WHERE `admin_status`=true";
+    $sql = "SELECT * FROM job_posting WHERE `admin_status`=true AND `status`=1";
     $data = mysqli_query($conn, $sql);
   ?>
   
@@ -59,7 +59,9 @@
     <?php while($row = mysqli_fetch_array($data)) { ?>
       <div class="job-card">
         <h2><?php echo $row['job_title']; ?></h2>
+        <p>Schedule type: <?php echo $row['schedule_type']; ?></p>
         <p>Schedule requirement: <?php echo $row['schedule_requirement']; ?></p>
+        <p>job type: <?php echo $row['job_type']; ?></p>
         <p>Location: <?php echo $row['location']; ?></p>
         <p>Description: <?php echo $row['description'];?></p>
         <p>Salary: <?php echo $row['salary'];?> </p>
