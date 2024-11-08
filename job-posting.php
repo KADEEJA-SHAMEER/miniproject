@@ -27,7 +27,6 @@ if(isset($_POST['submit']))
    else
    {
     header('Location :display-jobpost.php');
-    echo "<script>alert('job posted successfully')</script>";
    }
 }
 ?>
