@@ -38,6 +38,20 @@
   text-decoration: none;
   color: #fff;
 }
+.bell-icon {
+    position: relative;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
 
     </style>
     <link rel="stylesheet" href="style-dashboard.css">
@@ -50,17 +64,37 @@
 
     <!-- Bell and Profile icons together aligned to the left -->
     <div class="icons">
-        <div class="bell-icon">
-            <a href="fetch-notifications.php" target="frame">
-                <img src="./bell-icon.png" alt="Notifications">
-            </a>
-        </div>
-        <div class="profile">
-            <a href="profile-seeker.php" target="frame2">
-                <img src="./image.png"  alt="Profile">
-            </a>
-        </div>
-    </div>
-</div>
+      <!-- Bell Icon with Notification Count -->
+      <div class="bell-icon">
+          <a href="fetch-notifications.php" target="frame">
+              <img src="./bell-icon.png" alt="Notifications">
+              <span id="notification-count" class="notification-count"></span>
+          </a>
+      </div>
+      
+      <!-- Profile Icon -->
+      <div class="profile">
+          <a href="profile-seeker.php" target="frame2">
+              <img src="./image.png" alt="Profile">
+          </a>
+      </div>
+  </div>
+  </div>
+  <script>
+      // Function to fetch unread notification count from fetch_notification_count.php
+      function fetchNotificationCount() {
+          fetch('fetch-notification-count.php')
+              .then(response => response.text())
+              .then(count => {
+                  // If there's a count, display it in the notification count span
+                  document.getElementById('notification-count').innerText = count > 0 ? count : '';
+              })
+              .catch(error => console.error('Error fetching notification count:', error));
+      }
+  
+      // Fetch the notification count immediately and every 10 seconds after that
+      setInterval(fetchNotificationCount, 10000);
+      fetchNotificationCount(); // Initial fetch when the page loads
+  </script>
 </body>
 </html>
