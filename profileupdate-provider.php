@@ -63,7 +63,7 @@ if(isset($_POST['update']))
                 echo "error inserting values ";
         }
     else{
-        echo"<script><alert>your profile is updated</alert></script>";
+        echo"<script>alert('your profile is updated')</script>";
         header("Location: profileupdate-provider.php");
         exit;
         

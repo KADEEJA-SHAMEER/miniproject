@@ -4,7 +4,7 @@ session_start();
 $user_id =$_SESSION['user_id']; 
 if(isset($_POST['update']))
 {
-    $company_name=$_POST['name'];
+    $name=$_POST['name'];
     $phn_no=$_POST['phn_no'];
     $sql="UPDATE  `users` SET `first_login`=false WHERE `user_id`=$user_id";
     $data=mysqli_query($conn,$sql);
