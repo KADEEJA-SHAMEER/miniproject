@@ -4,6 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      /* Table Styles */
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f8f8;
+    color: #333;
+    font-weight: bold;
+}
+
+td input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    border: none;
+    outline: none;
+   /* background-color: #f0f0f0;*/
+}
+
+/* Button Styling */
+button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Table container for responsive design */
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+</style>
 </head>
 <body>
     <?php 
@@ -23,9 +81,9 @@
            {
             echo"<tr>";
             echo"<form action='' method='post'>";
-            echo"<td><input type='text' name='Name' value=".$row['Name']."></td>";
-            echo "<td><input type='text' name='email' value=".$row['email'].".</td>";
-            echo"<td><input type='text' name='role' value=".$row['role']."></td>";
+            echo"<td><input type='text' name='Name' value='". htmlspecialchars($row['Name'])."'></td>";
+            echo "<td><input type='text' name='email' value=".$row['email'].">.</td>";
+            echo "<td><input type='text' name='role' value='" . htmlspecialchars($row['role']) . "'></td>";
             echo"<input type='hidden' name='user_id' value=".$row['user_id'].">";
             echo"<td><button type=submit name='edit' >EDIT</button></td>";
             echo"<td> <button type=submit name='delete' >DELETE</button></td>";
