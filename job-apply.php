@@ -38,7 +38,7 @@
         <input type="date" name="apply_date" required><br>
         <label>about your time availability: </label><br>
         <textarea name="availability" rows="5" cols="50" placeholder="Enter here " required></textarea><br>
-        <input type="hidden" name="application_status" value="Pending">
+        <input type="hidden" name="application_status" value="pending">
         <button type="submit" name="apply" >APPLY</button>
      </form>
 </body>
