@@ -110,12 +110,33 @@ tr:hover {
         }
        if(isset($_POST['delete']))
        {
+        $role=$_POST['role'];
         $user_id=$_POST['user_id'];
         $sql="UPDATE `users` SET `user_status`=false WHERE `user_id`='$user_id' ";
         $data=mysqli_query($conn,$sql);
         if($data)
         {
-          echo"<scrpit>alert('user deleted successfully')</script>";
+          if($role=='job provider')
+          {
+            $sql1="UPDATE `job_posting` SET `status`=false WHERE `user_id`='$user_id'";
+            $data1=mysqli_query($conn,$sql1);
+            $sql2="UPDATE `job_application` SET `status`='false' WHERE `provider_id`='$user_id'";
+            $data2=mysqli_query($conn,$sql2);
+            if($data1 && $data2)
+            {
+              echo"<scrpit>alert('user deleted successfully')</script>";
+            }
+          }
+          else
+          {
+            if($role=='job seeker')
+             {
+              $sql3="UPDATE `job_application` SET `status`='false' WHERE `user_id`='$user_id'";
+              $data3=mysqli_query($conn,$sql3);
+              if($data3)   
+                echo"<scrpit>alert('user deleted successfully')</script>";
+            }
+        }
         }
         else
         {

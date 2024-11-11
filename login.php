@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
         header('Location: admin-dashboard.html');
         exit;
     }
-    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password' AND `status`=true";
     $data = mysqli_query($conn, $sql);
 
     if (!$data) {
