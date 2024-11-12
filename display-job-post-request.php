@@ -71,6 +71,7 @@
     echo "<th>POSTED DATE</th>";
     echo"<th>SALARY</th>";
     echo"<th>STATUS</th>";
+    echo "<th></th>";
     echo "</tr>";
      while($row=mysqli_fetch_array($data))
      {

@@ -38,6 +38,49 @@ WHERE $whereClause";
 
     $result2 = $conn->query($jobApplicationQuery);
     $applicationData = $result2->fetch_assoc();
+    /* <?php
+require_once("connect.php");
+
+$timeRangeText = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $reportType = $_POST['report_type'];
+    $startDate = $_POST['start_date'];
+    $endDate = $_POST['end_date'];
+    
+    $whereClause = "";
+    
+    if ($reportType == "yearly") {
+        $whereClause = "YEAR(posted_date) = YEAR(CURDATE())";
+        $timeRangeText = "Year: " . date("Y");
+    } elseif ($reportType == "monthly") {
+        $whereClause = "MONTH(posted_date) = MONTH(CURDATE()) AND YEAR(posted_date) = YEAR(CURDATE())";
+        $timeRangeText = "Month: " . date("F Y");
+    } elseif ($reportType == "custom") {
+        $whereClause = "posted_date BETWEEN '$startDate' AND '$endDate'";
+        $timeRangeText = "From: " . date("Y-m-d", strtotime($startDate)) . " To: " . date("Y-m-d", strtotime($endDate));
+    }
+    
+    // SQL query to get job postings count with status = true
+    $jobPostingQuery = "SELECT COUNT(*) as total_jobs FROM job_posting WHERE status = true AND $whereClause";
+    $result1 = $conn->query($jobPostingQuery);
+    $jobPostingCount = $result1->fetch_assoc()['total_jobs'];
+    
+    // SQL query to get applications count, accepted, rejected, and pending counts with status = true
+    $jobApplicationQuery = "SELECT 
+    COUNT(*) as total_applications, 
+    SUM(CASE WHEN application_status = 'approved' THEN 1 ELSE 0 END) as accepted_count,
+    SUM(CASE WHEN application_status = 'rejected' THEN 1 ELSE 0 END) as rejected_count,
+    SUM(CASE WHEN application_status = 'pending' THEN 1 ELSE 0 END) as pending_count
+FROM job_application
+JOIN job_posting ON job_application.job_post_id = job_posting.job_post_id
+WHERE job_posting.status = true AND job_application.status = true AND $whereClause";
+
+    $result2 = $conn->query($jobApplicationQuery);
+    $applicationData = $result2->fetch_assoc();
+}
+?>
+*/
 }
 ?>
 

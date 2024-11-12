@@ -90,7 +90,6 @@ tr:hover {
             echo"</tr>";
           }
         echo"</table>";
-        }
         if(isset($_POST['edit']))
         {
           $name=$_POST['Name'];
@@ -124,7 +123,7 @@ tr:hover {
             $data2=mysqli_query($conn,$sql2);
             if($data1 && $data2)
             {
-              echo"<scrpit>alert('user deleted successfully')</script>";
+              echo "<scriptt>alert('user deleted successfully')</script>";
             }
           }
           else
@@ -143,6 +142,7 @@ tr:hover {
           echo"<script>alert('error deleting the user')</script>";
         }
        }
+        }
         ?>
 </body>
 </html>

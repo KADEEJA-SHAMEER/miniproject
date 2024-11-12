@@ -80,7 +80,7 @@
     <?php
     require_once("connect.php");
 
-    $sql="SELECT * FROM `job_application` ";
+    $sql="SELECT * FROM `job_application` WHERE `status`=true ";
     $data=mysqli_query($conn,$sql);
        if(mysqli_num_rows($data) > 0) 
        {

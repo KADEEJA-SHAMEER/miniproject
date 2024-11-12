@@ -71,13 +71,13 @@
 <body>
     <?php
     require_once("connect.php");
-    $user_count = $conn->query("SELECT COUNT(*) FROM users")->fetch_assoc()['COUNT(*)'];
+    $user_count = $conn->query("SELECT COUNT(*) FROM users WHERE user_status = 1")->fetch_assoc()['COUNT(*)'];
 
 // Count job posts
-$job_post_count = $conn->query("SELECT COUNT(*) FROM job_posting")->fetch_assoc()['COUNT(*)'];
+$job_post_count = $conn->query("SELECT COUNT(*) FROM job_posting WHERE `status`=true")->fetch_assoc()['COUNT(*)'];
 
 // Count job applications
-$job_application_count = $conn->query("SELECT COUNT(*) FROM job_application")->fetch_assoc()['COUNT(*)'];
+$job_application_count = $conn->query("SELECT COUNT(*) FROM job_application WHERE `status`=true")->fetch_assoc()['COUNT(*)'];
 
 
 
@@ -102,7 +102,7 @@ $job_application_count = $conn->query("SELECT COUNT(*) FROM job_application")->f
   <h2>JOBS AVAILABLE ON DIFFERENT CATEGORIES</h2>
   <div class="category-cards">
     <?php
-    $query = "SELECT job_type, COUNT(*) as count FROM job_posting GROUP BY job_type";
+    $query = "SELECT job_type, COUNT(*) AS count FROM job_posting WHERE status = true GROUP BY job_type";
     $result = $conn->query($query);
     
     if ($result->num_rows == 0) {
