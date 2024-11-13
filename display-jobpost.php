@@ -11,48 +11,127 @@
         box-sizing:border-box;
       }
       h1{
-        text-align:center;
-        margin-bottom:20px;
+        text-align: center;
+        color: black;
       }
-    table {
-    width: 100%;
-  /*  margin: 20px auto;*/
-    border-collapse: collapse;
-    border-color: black;
-    border-width: 5px;
+      body {
+    font-family: Arial, sans-serif;
+    background-color:  #f0f0f0;
   }
-  
-  th {
-    background-color: #f0f0f0;
-    padding: 5px;
-    border: 2px solid #000000;
-  }
-  
-  td {
-    padding: 2px;
-    border: 2px solid #000000;
-  }
-  input, textarea {
- width:100%;
- height:100%;
- border:none;
- outline:none;
- font-size:20px;
- text-align:center;
-  }
-button[type="submit"]{
-  width:95%;
-  padding:7px;
-  background-color:#333;
-  color:white;
-  border:none;
-  cursor:pointer;
-  margin-bottom:10px;
-  font-size:16px;
+  table {
+  border-collapse: collapse;
+  width: auto; /* Adjusts the width based on content */
+  margin: 20px auto; /* Centers the table */
 }
-button[type="submit"]:hover{
-background-color:red;
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+  background-color: black;
+  color: white;
+  white-space: nowrap; /* Prevents text from wrapping to fit content in each cell */
 }
+
+th {
+  background-color: black;
+  color: white;
+}
+
+/* Style for the form container */
+.display {
+  width: 60%;
+  margin: auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+/* Style for form labels */
+.display label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Style for text inputs */
+.display input[type="text"],
+.display input[type="date"],
+.display input[type="number"],
+.display select,
+.display textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Style for dropdown menus (selects) */
+.display select {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Style for text areas */
+.display textarea {
+  resize: vertical; /* allows vertical resize but prevents horizontal */
+  min-height: 80px;
+}
+
+/* Style for the submit button */
+.display button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Hover effect for the submit button */
+.display button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Style for status text (e.g., APPROVED, PENDING) */
+.display .status {
+  font-weight: bold;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.display .status.approved {
+  color: green;
+}
+
+.display .status.pending {
+  color: red;
+}
+
+/* Style for spacing between form elements */
+.display > *:not(:last-child) {
+  margin-bottom: 15px;
+}
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
         </style>
 </head>
 <body>
@@ -73,43 +152,18 @@ background-color:red;
     echo "<table border=1>";
     echo"<tr>";
     echo "<th>JOB TITLE</th>";
-    echo"<th>CONTACT NO</th>";
-    echo"<th>SCHEDULE TYPE</TH>";
-    echo"<th>JOB TYPE</TH>";
-    echo "<th>SCHEDULE REQUIREMENT</th>";
-    echo "<th>LOCATION</th>";
-    echo "<th>DESCRIPTION</th>";
     echo "<th>POSTED DATE</th>";
-    echo"<th>SALARY</th>";
+    echo "<th>POST EXPIRE DATE</TH>";
     echo"<th>STATUS</th>";
+    echo "<th></th><th></th>";
     echo "</tr>";
      while($row=mysqli_fetch_array($data))
      {
-        echo"<form action='' method='post'>";
-        echo "<input type='hidden' name='post_id' value=".$row['job_post_id'].">";
-        echo"<tr>";
-        echo "<td><input type='text' name='jobtitle' value=".$row['job_title']."></td>";
-        echo "<td><input type='text' name='contact_no' value=".$row['contact_no']."></td>";
-        echo "<td> 
-        <select name='schedule_type' required>
-            <option value='Evening & weekend jobs' " . ($row['schedule_type'] == 'Evening & weekend jobs' ? 'selected' : '') . ">Evening & weekend jobs</option>
-            <option value='Flexible hours' " . ($row['schedule_type'] == 'Flexible hours' ? 'selected' : '') . ">Flexible hours</option>
-         </select>
-         </td>";
-         echo '<td><select name="job_type" required>
-        <option value="Retail" ' . ($row['job_type'] == 'Retail' ? 'selected' : '') . '>Retail</option>
-        <option value="Hospitality" ' . ($row['job_type'] == 'Hospitality' ? 'selected' : '') . '>Hospitality</option>
-        <option value="Education" ' . ($row['job_type'] == 'Education' ? 'selected' : '') . '>Education</option>
-        <option value="Healthcare" ' . ($row['job_type'] == 'Healthcare' ? 'selected' : '') . '>Healthcare</option>
-        <option value="Finance" ' . ($row['job_type'] == 'Finance' ? 'selected' : '') . '>Finance</option>
-        <option value="Customer Service" ' . ($row['job_type'] == 'Customer Service' ? 'selected' : '') . '>Customer Service</option>
-      </select></td>';  
-        echo "<td><textarea name='schedule_req' rows=3 cols=50 >".$row['schedule_requirement']."</textarea></td>";
-        echo "<td><textarea name='location' rows=5 cols='50'>".$row['location']."</textarea></td>";
-        echo "<td><textarea name='description' rows=5 cols=50 >".$row['description']."</textarea></td>";
-        echo "<td><input type='date' name='post_date' value=".$row['posted_date']."></td>";
-        echo "<td> <input type='number' name='salary' value=".$row['salary']."></td>";
-        if($row['admin_status'])
+      echo "<tr>";
+      echo"<td>".$row['job_title']."</td>";
+      echo"<td> ".$row['posted_date']."</td>";
+      echo"<td> ".$row['exp_date']."</td>";
+      if($row['admin_status'])
         {
           echo "<td>APPROVED</td>";
         }
@@ -117,31 +171,14 @@ background-color:red;
         {
           echo"<td>PENDING</td>";
         }
-        echo "<td><button type=submit name=update>UPDATE</button></td>";
-        echo "<td><button type=submit name=delete>DELETE</button></td>";
-        echo "</tr>";
-        echo "</form>";
-    }
-    echo "</table>";
-   }
-   if(isset($_POST['update']))
-   {
-    $post_id=$_POST['post_id'];
-    $job_title=$_POST['jobtitle'];
-    $schedule_type=$_POST['schedule_type'];
-    $job_type=$_POST['job_type'];
-    $contact=$_POST['contact_no'];
-    $schedule_req=$_POST['schedule_req'];
-    $location=$_POST['location'];
-    $description=$_POST['description'];
-    $post_date=$_POST['post_date'];
-    $salary=$_POST['salary'];
-    $sql="UPDATE `job_posting` SET `job_title`='$job_title',
-    `contact_no`='$contact',`schedule_type`='$schedule_type',`job_type`='$job_type',`schedule_requirement`='$schedule_req',
-    `location`='$location',`description`='$description',`posted_date`='$post_date',`salary`='$salary' WHERE  `job_post_id`='$post_id'";
-     if($conn->query($sql)===FALSE){
-      die("error updating value: ".$conn->error);
-  }
+      echo"<form action='display-jobpost.php'method='post' target='frame2'>";
+      echo "<input type='hidden' name='post_id' value=".$row['job_post_id'].">";
+      echo "<td><button type=submit name=edit>EDIT</button></td>";
+      echo "<td><button type=submit name=delete>DELETE</button></td>";
+      echo"</form>";
+      echo"</tr>";
+     }
+     echo "</table>";
    }
    if(isset($_POST['delete']))
    {
@@ -153,6 +190,54 @@ background-color:red;
     echo "<script>alert('POST REMOVED SUCCESSFULLY')</script>";
   }
    }
+   if(isset($_POST['edit']))
+      {
+        $post_id=$_POST['post_id'];
+        $sql="SELECT * FROM `job_posting` WHERE `job_post_id`='$post_id'";
+        $data=mysqli_query($conn,$sql);
+        if(!$data)
+        {
+           echo "<script>alert('No job post found for this post id')</script>";
+        }
+        else
+        {
+        $row1=mysqli_fetch_array($data);  
+        echo "<h1>EDIT YOUR JOB POST</h1>";
+        echo "<form  class='display' action='edit-job.php' method ='post' >";
+        echo "<label>Enter your job title</label><br>";
+        echo "<input type='hidden' name='post_id' value=".$row1['job_post_id'].">"; 
+        echo "<input type='text' name='jobtitle' value=". htmlspecialchars($row1['job_title']).">";
+        echo '<select name="job_type" required>
+        <option value="Retail" ' . ($row1['job_type'] == 'Retail' ? 'selected' : '') . '>Retail</option>
+        <option value="Hospitality" ' . ($row1['job_type'] == 'Hospitality' ? 'selected' : '') . '>Hospitality</option>
+        <option value="Education" ' . ($row1['job_type'] == 'Education' ? 'selected' : '') . '>Education</option>
+        <option value="Healthcare" ' . ($row1['job_type'] == 'Healthcare' ? 'selected' : '') . '>Healthcare</option>
+        <option value="Finance" ' . ($row1['job_type'] == 'Finance' ? 'selected' : '') . '>Finance</option>
+        <option value="Customer Service" ' . ($row1['job_type'] == 'Customer Service' ? 'selected' : '') . '>Customer Service</option>
+        </select>'; 
+        echo"<select name='schedule_type' required>
+            <option value='Evening & weekend jobs' " . ($row1['schedule_type'] == 'Evening & weekend jobs' ? 'selected' : '') . ">Evening & weekend jobs</option>
+            <option value='Flexible hours' " . ($row1['schedule_type'] == 'Flexible hours' ? 'selected' : '') . ">Flexible hours</option>
+            </select>";
+       echo "<textarea name='schedule_req' rows=3 cols=50 >". htmlspecialchars($row1['schedule_requirement'])."</textarea>";
+       echo "<textarea name='location' rows=5 cols='50'>". htmlspecialchars($row1['location'])."</textarea>";
+       echo "<textarea name='description' rows='5' cols='50'>" . htmlspecialchars($row1['description']) . "</textarea>";
+       echo "<input type='text' name='contact_no' value=".$row1['contact_no'].">";
+       echo "<input type='date' name='post_date' value=".$row1['posted_date'].">";
+       echo "<input type='date' name='exp_date' value=".$row1['exp_date'].">";
+       echo " <input type='number' name='salary' value=".$row1['salary'].">";
+       if($row1['admin_status'])
+       {
+         echo "APPROVED<br><br>";
+       }
+       else
+       {
+         echo"PENDING<br><br>";
+       }
+       echo "<button type=submit name=update>UPDATE</button>";
+       echo "</form>";
+     }
+  }
    ?>
 </body>
 </html>

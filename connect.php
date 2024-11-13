@@ -66,6 +66,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
             location text not null,
             description text not null,
             posted_date date not null,
+            exp_date date not null,
             salary int(10) not null,
             status boolean default true,
             admin_status boolean default false,

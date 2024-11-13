@@ -12,13 +12,14 @@ if(isset($_POST['submit']))
    $post_date=$_POST['post_date'];
    $salary=$_POST['salary'];
    $schedule_type=$_POST['schedule_type'];
+   $exp_date=$_POST['exp_date'];
    $job_type=$_POST['job_type'];
 
 
   $sql ="INSERT INTO `job_posting`(`user_id`,`job_title`, `contact_no`, `schedule_type`,
-   `job_type`, `schedule_requirement`, `location`, `description`, `posted_date`, `salary`)
+   `job_type`, `schedule_requirement`, `location`, `description`, `posted_date`,`exp_date`,`salary`)
     VALUES ('$user_id','$job_title','$contact_no','$schedule_type','$job_type','$schedule_req','$location',
-    '$description','$post_date','$salary')";
+    '$description','$post_date','$exp_date','$salary')";
    $data=mysqli_query($conn, $sql);
    if(!$data)
    {
