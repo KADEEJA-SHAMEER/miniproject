@@ -74,38 +74,39 @@
        echo "</tr>";
 
        while ($row = mysqli_fetch_array($data)) {
-           $isExpired = strtotime($row['exp_date']) < strtotime(date('Y-m-d'));
-
-           // Start form for each row
-           echo "<form action='' method='post'>";
-           echo "<input type='hidden' name='post_id' value='".$row['job_post_id']."'>";
-
-           // Highlight expired job posts by changing row color
-           echo "<tr" . ($isExpired ? " style='background-color: #f8d7da;'" : "") . ">";
-
-           echo "<td>" . $row['job_title'] . "</td>";
-           echo "<td>" . $row['contact_no'] . "</td>";
-           echo "<td>" . $row['schedule_type'] . "</td>";
-           echo "<td>" . $row['job_type'] . "</td>";
-           echo "<td>" . $row['schedule_requirement'] . "</td>";
-           echo "<td>" . $row['location'] . "</td>";
-           echo "<td>" . $row['description'] . "</td>";
-           echo "<td>" . $row['posted_date'] . "</td>";
-           echo "<td>" . $row['exp_date'] . ($isExpired ? " (Expired)" : "") . "</td>";
-           echo "<td>" . $row['salary'] . "</td>";
-
-           if ($row['admin_status']) {
-               echo "<td> APPROVED</td>";
-           } else {
-               echo "<td><button type='submit' name='confirm'>CONFIRM</button></td>";
-           }
-
-           echo "<td><button type='submit' name='remove'" . ($isExpired ? " disabled" : "") . ">REMOVE</button></td>";
-           echo "</tr>";
-           echo "</form>";
-       }
-
-       echo "</table>";
+        $isExpired = strtotime($row['exp_date']) < strtotime(date('Y-m-d'));
+    
+        // Start form for each row
+        echo "<form action='' method='post'>";
+        echo "<input type='hidden' name='post_id' value='".htmlspecialchars($row['job_post_id'], ENT_QUOTES)."'>";
+    
+        // Highlight expired job posts by changing row color
+        echo '<tr' . ($isExpired ? ' style="background-color: #f8d7da;"' : '') . '>';
+    
+        // Display each column with htmlspecialchars to prevent output issues
+        echo "<td>" . htmlspecialchars($row['job_title'], ENT_QUOTES) . "</td>";
+        echo "<td>" . htmlspecialchars($row['contact_no'], ENT_QUOTES) . "</td>";
+        echo "<td>" . htmlspecialchars($row['schedule_type'], ENT_QUOTES) . "</td>";
+        echo "<td>" . htmlspecialchars($row['job_type'], ENT_QUOTES) . "</td>";
+        echo "<td>" . htmlspecialchars($row['schedule_requirement'], ENT_QUOTES) . "</td>";
+        echo "<td>" . htmlspecialchars($row['location'], ENT_QUOTES) . "</td>";
+        echo "<td>" . htmlspecialchars($row['description'], ENT_QUOTES) . "</td>";
+        echo "<td>" . htmlspecialchars($row['posted_date'], ENT_QUOTES) . "</td>";
+        echo "<td>" . htmlspecialchars($row['exp_date'], ENT_QUOTES) . ($isExpired ? " (Expired)" : "") . "</td>";
+        echo "<td>" . htmlspecialchars($row['salary'], ENT_QUOTES) . "</td>";
+    
+        if ($row['admin_status']) {
+            echo "<td> APPROVED</td>";
+        } else {
+            echo "<td><button type='submit' name='confirm'>CONFIRM</button></td>";
+        }
+    
+        echo "<td><button type='submit' name='remove'" . ($isExpired ? " disabled" : "") . ">REMOVE</button></td>";
+        echo "</tr>";
+        echo "</form>";
+    }
+    echo "</table>";
+    
    }
 
    if (isset($_POST['confirm'])) {
