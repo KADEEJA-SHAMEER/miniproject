@@ -50,75 +50,81 @@
 <body>
 <?php
    require_once("connect.php");   
-   $sql="SELECT * FROM job_posting WHERE `status`=true";
-   $data=mysqli_query($conn,$sql);
-   if(mysqli_num_rows($data)<=0)
-   {
-    echo "<script>alert('No posted jobs found ')</script>";
+   $sql = "SELECT * FROM job_posting WHERE `status`=true";
+   $data = mysqli_query($conn, $sql);
+   
+   if (mysqli_num_rows($data) <= 0) {
+       echo "<script>alert('No posted jobs found')</script>";
+   } else {
+       echo "<h1>JOBS YOU POSTED</h1>";
+       echo "<table border=1>";
+       echo "<tr>";
+       echo "<th>JOB TITLE</th>";
+       echo "<th>CONTACT NO</th>";
+       echo "<th>SCHEDULE TYPE</TH>";
+       echo "<th>JOB TYPE</TH>";
+       echo "<th>SCHEDULE REQUIREMENT</th>";
+       echo "<th>LOCATION</th>";
+       echo "<th>DESCRIPTION</th>";
+       echo "<th>POSTED DATE</th>";
+       echo "<th>POST EXPIRE DATE</th>";
+       echo "<th>SALARY</th>";
+       echo "<th>STATUS</th>";
+       echo "<th></th>";
+       echo "</tr>";
+
+       while ($row = mysqli_fetch_array($data)) {
+           $isExpired = strtotime($row['exp_date']) < strtotime(date('Y-m-d'));
+
+           // Start form for each row
+           echo "<form action='' method='post'>";
+           echo "<input type='hidden' name='post_id' value='".$row['job_post_id']."'>";
+
+           // Highlight expired job posts by changing row color
+           echo "<tr" . ($isExpired ? " style='background-color: #f8d7da;'" : "") . ">";
+
+           echo "<td>" . $row['job_title'] . "</td>";
+           echo "<td>" . $row['contact_no'] . "</td>";
+           echo "<td>" . $row['schedule_type'] . "</td>";
+           echo "<td>" . $row['job_type'] . "</td>";
+           echo "<td>" . $row['schedule_requirement'] . "</td>";
+           echo "<td>" . $row['location'] . "</td>";
+           echo "<td>" . $row['description'] . "</td>";
+           echo "<td>" . $row['posted_date'] . "</td>";
+           echo "<td>" . $row['exp_date'] . ($isExpired ? " (Expired)" : "") . "</td>";
+           echo "<td>" . $row['salary'] . "</td>";
+
+           if ($row['admin_status']) {
+               echo "<td> APPROVED</td>";
+           } else {
+               echo "<td><button type='submit' name='confirm'>CONFIRM</button></td>";
+           }
+
+           echo "<td><button type='submit' name='remove'" . ($isExpired ? " disabled" : "") . ">REMOVE</button></td>";
+           echo "</tr>";
+           echo "</form>";
+       }
+
+       echo "</table>";
    }
-  else
-   {
-    echo "<h1>JOBS YOU POSTED</h1>";
-    echo "<table border=1>";
-    echo"<tr>";
-    echo "<th>JOB TITLE</th>";
-    echo"<th>CONTACT NO</th>";
-    echo"<th>SCHEDULE TYPE</TH>";
-    echo"<th>JOB TYPE</TH>";
-    echo "<th>SCHEDULE REQUIREMENT</th>";
-    echo "<th>LOCATION</th>";
-    echo "<th>DESCRIPTION</th>";
-    echo "<th>POSTED DATE</th>";
-    echo"<th>SALARY</th>";
-    echo"<th>STATUS</th>";
-    echo "<th></th>";
-    echo "</tr>";
-     while($row=mysqli_fetch_array($data))
-     {
-        echo"<form action='' method='post'>";
-        echo "<input type='hidden' name='post_id' value=".$row['job_post_id'].">";
-        echo"<tr>";
-        echo "<td>".$row['job_title']."</td>";
-        echo"<td>".$row['contact_no']."</td>";
-        echo"<td>".$row['schedule_type']."</td>";
-        echo"<td>".$row['job_type']."</td>";
-        echo "<td>".$row['schedule_requirement']."</td>";
-        echo "<td>".$row['location']."</td>";
-        echo "<td>".$row['description']."</td>";
-        echo "<td>".$row['posted_date']."</td>";
-        echo "<td>".$row['salary']."</td>";
-        if($row['admin_status'])
-        {
-            echo"<td> APPROVED</td>";
-        }
-        else
-           echo "<td><button type=submit name=confirm>CONFIRM</button></td>";
-        echo "<td><button type=submit name=remove>REMOVE</button></td>";
-        echo "</tr>";
-        echo "</form>";
-     }
-     echo"</table>";
+
+   if (isset($_POST['confirm'])) {
+       $post_id = $_POST['post_id'];
+       $sql = "UPDATE job_posting SET `admin_status`=true WHERE `job_post_id`='$post_id'";
+       $data = mysqli_query($conn, $sql);
+       if ($data) {
+           echo "<script>alert('Status updated successfully')</script>";
+       }
    }
-   if(isset($_POST['confirm']))
-   {
-    $post_id=$_POST['post_id'];
-    $sql="UPDATE job_posting SET `admin_status`=true WHERE `job_post_id`='$post_id'";
-    $data=mysqli_query($conn,$sql);
-    if($data)
-     {
-        echo"<script>alert('status updated successfully')</script>";
-     }
+
+   if (isset($_POST['remove'])) {
+       $post_id = $_POST['post_id'];
+       $sql = "UPDATE job_posting SET `status`=false WHERE `job_post_id`='$post_id'";
+       $data = mysqli_query($conn, $sql);
+       if ($data) {
+           echo "<script>alert('Post removed successfully')</script>";
+       }
    }
-   if(isset($_POST['remove']))
-   {
-    $post_id=$_POST['post_id'];
-    $sql="UPDATE job_posting SET `status`=false WHERE `job_post_id`='$post_id'";
-    $data=mysqli_query($conn,$sql);
-    if($data)
-     {
-        echo"<script>alert('Post removed successfully')</script>";
-     }
-   }
-   ?>
+?>
 </body>
 </html>

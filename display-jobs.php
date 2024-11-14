@@ -51,7 +51,8 @@
 <?php 
     require_once("connect.php"); 
     session_start(); 
-    $sql = "SELECT * FROM job_posting WHERE `admin_status`=true AND `status`=1";
+    $sql = "SELECT * FROM job_posting  WHERE `admin_status`=true AND `status`=1 AND `exp_date` >= CURDATE()";
+
     $data = mysqli_query($conn, $sql);
   ?>
   
@@ -67,6 +68,7 @@
         <p>Salary: <?php echo $row['salary'];?> </p>
         <p>Contact no: <?php echo $row['contact_no'];?> </p>
         <p>Posted on: <?php echo $row['posted_date']; ?></p>
+        <p>Post will expire on: <?php echo $row['exp_date']; ?></p>
         <form action="" method=post>
         <input type="hidden" name="post_id" value="<?php echo $row['job_post_id']; ?>">
         <input type="hidden" name="provider_id" value="<?php echo $row['user_id']; ?>">

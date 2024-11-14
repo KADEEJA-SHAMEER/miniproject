@@ -11,7 +11,7 @@
     require_once("../connect.php");
 $job_type="Retail";
 // Query to fetch job postings based on the selected job type
-$sql = "SELECT * FROM job_posting WHERE `job_type` ='$job_type' AND status = 1 AND `admin_status`=1"; // Only show active jobs
+$sql = "SELECT * FROM job_posting WHERE `job_type` ='$job_type' AND `status` = 1 AND `admin_status`=1 `exp_date` >= CURDATE()"; // Only show active jobs
 $result=mysqli_query($conn,$sql);
 
 if ($result->num_rows > 0) {
@@ -28,6 +28,7 @@ if ($result->num_rows > 0) {
         echo "<p><strong>Salary:</strong> $" . number_format($row['salary']) . "</p>";
         echo "<p><strong>Contact:</strong> " . htmlspecialchars($row['contact_no']) . "</p>";
         echo "<p><strong>Posted on:</strong> " . $row['posted_date'] . "</p>";
+        echo "<p><strong>Post will expire on:</strong> " . $row['exp_date'] . "</p>";
         echo "<form action='' method='POST'>";
         echo "<input type='hidden' name='job_post_id' value='" . $row['job_post_id'] . "'>";
         echo "<input type='hidden' name='user_id' value='" . $row['user_id'] . "'>";
