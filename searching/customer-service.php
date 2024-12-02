@@ -11,7 +11,7 @@
     require_once("../connect.php");
 $job_type="Customer service";
 // Query to fetch job postings based on the selected job type
-$sql = "SELECT * FROM job_posting WHERE `job_type` ='$job_type' AND `status` = 1 AND `admin_status` = 1 `exp_date` >= CURDATE()"; // Only show active jobs
+$sql = "SELECT * FROM job_posting WHERE `job_type` ='$job_type' AND `status` = 1 AND `admin_status` = 1 AND `exp_date` >= CURDATE()"; // Only show active jobs
 $result=mysqli_query($conn,$sql);
 
 if ($result->num_rows > 0) {

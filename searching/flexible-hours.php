@@ -14,7 +14,7 @@ require_once("../connect.php");
 $schedule_type ="Flexible hours" ;
 
 // Query to fetch job postings based on the selected schedule type
-$sql = "SELECT * FROM job_posting WHERE `schedule_type` = '$schedule_type' AND `status` = 1 AND `admin_status`=1 `exp_date` >= CURDATE()"; // Only show active jobs
+$sql = "SELECT * FROM job_posting WHERE `schedule_type` = '$schedule_type' AND `status` = 1 AND `admin_status`=1 AND `exp_date` >= CURDATE()"; // Only show active jobs
 $result=mysqli_query($conn,$sql);
 
 if ($result->num_rows > 0) {
