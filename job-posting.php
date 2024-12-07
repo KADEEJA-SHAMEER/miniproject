@@ -27,7 +27,7 @@ if(isset($_POST['submit']))
    }
    else
    {
-    header('Location :display-jobpost.php');
+    header('Location: display-jobpost.php');
    }
 }
 ?>
