@@ -174,7 +174,7 @@
 </div>
 <?php
         }
-        elsedata
+        else
         {
             echo"no data retrieved";
         }
@@ -184,7 +184,7 @@
         $seeker_id=$_POST['seeker_id'];
         $job_apply_id = $_POST['job_apply_id'];
         $status=$_POST['status'];
-            $sql3 = "UPDATE `job_application` SET `application_status`='$status' WHERE `job_apply_id`='$job_apply_id'";
+        $sql3 = "UPDATE `job_application` SET `application_status`='$status' WHERE `job_apply_id`='$job_apply_id'";
         if($conn->query($sql3)===FALSE){
           die("error updating value: ".$conn->error);
       }else
