@@ -14,6 +14,7 @@ if (isset($_POST['apply'])) {
      `experience`, `application_status`) VALUES ('$user_id','$provider_id','$post_id', '$apply_date', 
      '$availability','$experience', '$application_status')";
     if (mysqli_query($conn, $query)) {
+        header('Location: apply-status.php');
         echo "<script>alert('Application submitted successfully.')</script>";
     } else {
         echo "Error: " . mysqli_error($conn);
