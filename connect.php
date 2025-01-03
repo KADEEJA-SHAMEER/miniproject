@@ -47,7 +47,7 @@ $sql="CREATE TABLE IF NOT EXISTS job_provider(
         gender varchar(10) not null,
         skills VARCHAR(100) NOT NULL,
         education ENUM('High School', 'Diploma', 'Bachelor\'s Degree',
-         ' Master\'s Degree', 'PhD', 'Other') Not null,
+         'master\'s Degree', 'PhD', 'Other') Not null,
          seeker_address varchar(100) not null,
          seeker_phno varchar(10) not null,
         FOREIGN KEY(user_id) REFERENCES users(user_id))";

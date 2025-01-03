@@ -45,24 +45,50 @@ button:hover {
     background-color: #0056b3;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.job-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     margin-top: 20px;
 }
 
-table, th, td {
+.job-card {
+    background-color: #fff;
     border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    box-sizing: border-box;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
+.job-card h3 {
+    margin: 0 0 10px;
+    color: #4CAF50;
 }
 
-th {
-    background-color: #f4f4f4;
+.job-card p {
+    margin: 5px 0;
+    color: #555;
 }
+
+.job-card p strong {
+    color: #000;
+}
+
 </style>
 </head>
 <body>
@@ -99,14 +125,18 @@ th {
     <button type="submit">Search</button>
 </form>
 <?php
-require_once("connect.php");
+// Database connection
+$conn = new mysqli("localhost", "username", "password", "database_name");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Initialize where clause
 $whereClauses = [];
 
 // Check for Job Title filter
-if (isset($_POST['job_title']) && !empty($_POST['job_title'])) {
-    $jobTitle = $conn->real_escape_string($_POST['job_title']);
+if (isset($_GET['job_title']) && !empty($_GET['job_title'])) {
+    $jobTitle = $conn->real_escape_string($_GET['job_title']);
     $whereClauses[] = "job_title LIKE '%$jobTitle%'";
 }
 
@@ -147,28 +177,22 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     echo "<h2>Job Results:</h2>";
-    echo "<table border='1'>
-            <tr>
-                <th>Job Title</th>
-                <th>Description</th>
-                <th>Location</th>
-                <th>Salary</th>
-                <th>Posted Date</th>
-            </tr>";
+    echo "<div class='job-container'>";
     while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>" . htmlspecialchars($row['job_title']) . "</td>
-                <td>" . htmlspecialchars($row['description']) . "</td>
-                <td>" . htmlspecialchars($row['location']) . "</td>
-                <td>" . htmlspecialchars($row['salary']) . "</td>
-                <td>" . htmlspecialchars($row['posted_date']) . "</td>
-            </tr>";
+        echo "<div class='job-card'>
+                <h3>" . htmlspecialchars($row['job_title']) . "</h3>
+                <p><strong>Description:</strong> " . htmlspecialchars($row['description']) . "</p>
+                <p><strong>Location:</strong> " . htmlspecialchars($row['location']) . "</p>
+                <p><strong>Salary:</strong> $" . htmlspecialchars($row['salary']) . "</p>
+                <p><strong>Posted Date:</strong> " . htmlspecialchars($row['posted_date']) . "</p>
+              </div>";
     }
-    echo "</table>";
+    echo "</div>";
 } else {
     echo "<p>No matching jobs found.</p>";
 }
 ?>
+
 
 </body>
 </html>
