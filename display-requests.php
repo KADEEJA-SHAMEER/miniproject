@@ -160,7 +160,8 @@
          <p>applied date: <?php echo $row3['apply_date']; ?></p>
          <?php 
        echo "<form action='' method='post' > 
-       <input type='hidden' name='seeker_id' value='".$row3['user_id']."'> 
+       <input type='hidden' name='seeker_id' value='".$row3['user_id']."'>
+       <input type='hidden' name='job_apply_id' value='".$row3['job_apply_id']."'> 
        <label>Application status :</label> 
        <select name='status' required> 
        <option value='pending' ".(($row3['application_status'] == 'pending') ? 'selected' : '').">PENDING</option> 
@@ -173,7 +174,7 @@
 </div>
 <?php
         }
-        else
+        elsedata
         {
             echo"no data retrieved";
         }
@@ -181,8 +182,9 @@
       if(isset($_POST['confirm']))
       {
         $seeker_id=$_POST['seeker_id'];
+        $job_apply_id = $_POST['job_apply_id'];
         $status=$_POST['status'];
-        $sql3="UPDATE `job_application` SET `application_status`='$status' WHERE `user_id`='$seeker_id'";
+            $sql3 = "UPDATE `job_application` SET `application_status`='$status' WHERE `job_apply_id`='$job_apply_id'";
         if($conn->query($sql3)===FALSE){
           die("error updating value: ".$conn->error);
       }else
