@@ -7,44 +7,71 @@
     <style>
   body {
     font-family: Arial, sans-serif;
-    background-color:  #f0f0f0;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
   }
 
   h1 {
     text-align: center;
     color: black;
+    margin-bottom: 20px;
   }
 
   table {
     border-collapse: collapse;
-    width: 80%;
+    width: 90%;  /* Increased width */
     margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   }
 
   th, td {
-    border: 1px solid black;
-    padding: 10px;
+    border: 1px solid #ddd;
+    padding: 15px; /* Increased padding for better readability */
     text-align: left;
-    background-color: black;
-    color:white;
+    font-size: 14px;
   }
 
   th {
-    background-color: black;
-    color:white;
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
   }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #e0e0e0;
+  }
+
   button[type="submit"] {
     background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
+    color: white;
+    padding: 8px 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
   }
 
   button[type="submit"]:hover {
     background-color: #3e8e41;
   }
+
+  button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* Additional styling for expired row */
+  tr[style*="background-color: #f8d7da;"] {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+
   </style>
 </head>
 <body>
