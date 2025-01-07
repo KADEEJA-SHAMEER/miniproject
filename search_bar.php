@@ -127,84 +127,87 @@ h2 {
 <?php
 require_once("connect.php");
 session_start();
-$user_id=$_SESSION['user_id'];
-// Initialize where clause
+
+// Check if the apply button is clicked
+if (isset($_POST['apply'])) {
+    $provider_id = $_POST['user_id'];
+    $post_id = $_POST['job_post_id'];
+    $_SESSION['job_id'] = $post_id;
+    $_SESSION['provider_id'] = $provider_id;
+    header('Location: job-apply.php');
+    exit(); // Ensure the script stops after redirection
+}
+
+$user_id = $_SESSION['user_id'];
 $whereClauses = [];
-if(isset($_POST['search']))
-{
-// Check for Job Title filter
-if (isset($_POST['job_title']) && !empty($_POST['job_title'])) {
-    $jobTitle = $conn->real_escape_string($_POST['job_title']);
-    $whereClauses[] = "job_title LIKE '%$jobTitle%'";
-}
 
-// Check for Job Type filter
-if (isset($_POST['job_type']) && !empty($_POST['job_type'])) {
-    $jobType = $conn->real_escape_string($_POST['job_type']);
-    $whereClauses[] = "job_type = '$jobType'";
-}
-
-// Check for Location filter
-if (isset($_POST['location']) && !empty($_POST['location'])) {
-    $location = $conn->real_escape_string($_POST['location']);
-    $whereClauses[] = "location LIKE '%$location%'";
-}
-
-// Check for Salary Range filter
-if (isset($_POST['salary_min']) && isset($_POST['salary_max']) && !empty($_POST['salary_min']) && !empty($_GET['salary_max'])) {
-    $salaryMin = (int)$_POST['salary_min'];
-    $salaryMax = (int)$_POST['salary_max'];
-    $whereClauses[] = "salary BETWEEN $salaryMin AND $salaryMax";
-}
-
-// Add default conditions for active and non-expired jobs
-$whereClauses[] = "status = true";
-$whereClauses[] = "admin_status = true";
-$whereClauses[] = "posted_date >= CURDATE()";
-
-// Combine all where clauses into a single string
-$whereClause = implode(' AND ', $whereClauses);
-
-// SQL query to fetch matching job postings
-$sql = "SELECT job_post_id,user_id, job_title, description, location, salary, posted_date 
-        FROM job_posting 
-        WHERE $whereClause 
-        ORDER BY posted_date DESC";
-
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    echo "<h2>Job Results:</h2>";
-    echo "<div class='job-container'>";
-    while ($row = $result->fetch_assoc()) {
-        echo "<div class='job-card'>
-                <h3>" . htmlspecialchars($row['job_title']) . "</h3>
-                <p><strong>Description:</strong> " . htmlspecialchars($row['description']) . "</p>
-                <p><strong>Location:</strong> " . htmlspecialchars($row['location']) . "</p>
-                <p><strong>Salary:</strong> $" . htmlspecialchars($row['salary']) . "</p>
-                <p><strong>Posted Date:</strong> " . htmlspecialchars($row['posted_date']) . "</p>";
-                echo "<form action='' method='POST'>";
-                echo "<input type='hidden' name='job_post_id' value='" . $row['job_post_id'] . "'>";
-                echo "<input type='hidden' name='user_id' value='" . $row['user_id'] . "'>";
-                echo "<button type='submit' name='apply'>Apply Now</button>";
-                 echo "</form>";
-          echo"</div>";
-          if(isset($_POST['apply']))
-          {
-            $provider_id=$_POST['user_id'];
-            $post_id=$_POST['job_post_id'];
-            session_start();
-            $_SESSION['job_id']=$post_id;
-            $_SESSION['provider_id']=$provider_id;
-            header('Location: ../job-apply.php');
-          }
+// Check if the search button is clicked
+if (isset($_POST['search'])) {
+    // Check for Job Title filter
+    if (isset($_POST['job_title']) && !empty($_POST['job_title'])) {
+        $jobTitle = $conn->real_escape_string($_POST['job_title']);
+        $whereClauses[] = "job_title LIKE '%$jobTitle%'";
     }
-    echo "</div>";
-} else {
-    echo "<p>No matching jobs found.</p>";
-}
+
+    // Check for Job Type filter
+    if (isset($_POST['job_type']) && !empty($_POST['job_type'])) {
+        $jobType = $conn->real_escape_string($_POST['job_type']);
+        $whereClauses[] = "job_type = '$jobType'";
+    }
+
+    // Check for Location filter
+    if (isset($_POST['location']) && !empty($_POST['location'])) {
+        $location = $conn->real_escape_string($_POST['location']);
+        $whereClauses[] = "location LIKE '%$location%'";
+    }
+
+    // Check for Salary Range filter
+    if (isset($_POST['salary_min']) && isset($_POST['salary_max']) && !empty($_POST['salary_min']) && !empty($_POST['salary_max'])) {
+        $salaryMin = (int)$_POST['salary_min'];
+        $salaryMax = (int)$_POST['salary_max'];
+        $whereClauses[] = "salary BETWEEN $salaryMin AND $salaryMax";
+    }
+
+    // Add default conditions for active and non-expired jobs
+    $whereClauses[] = "status = true";
+    $whereClauses[] = "admin_status = true";
+    $whereClauses[] = "posted_date >= CURDATE()";
+
+    // Combine all where clauses into a single string
+    $whereClause = implode(' AND ', $whereClauses);
+
+    // SQL query to fetch matching job postings
+    $sql = "SELECT job_post_id, user_id, job_title, description, location, salary, posted_date 
+            FROM job_posting 
+            WHERE $whereClause 
+            ORDER BY posted_date DESC";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "<h2>Job Results:</h2>";
+        echo "<div class='job-container'>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='job-card'>
+                    <h3>" . htmlspecialchars($row['job_title']) . "</h3>
+                    <p><strong>Description:</strong> " . htmlspecialchars($row['description']) . "</p>
+                    <p><strong>Location:</strong> " . htmlspecialchars($row['location']) . "</p>
+                    <p><strong>Salary:</strong> $" . htmlspecialchars($row['salary']) . "</p>
+                    <p><strong>Posted Date:</strong> " . htmlspecialchars($row['posted_date']) . "</p>";
+            echo "<form action='' method='POST'>";
+            echo "<input type='hidden' name='job_post_id' value='" . $row['job_post_id'] . "'>";
+            echo "<input type='hidden' name='user_id' value='" . $row['user_id'] . "'>";
+            echo "<button type='submit' name='apply'>Apply Now</button>";
+            echo "</form>";
+            echo "</div>";
+        }
+        echo "</div>";
+    } else {
+        echo "<p>No matching jobs found.</p>";
+    }
 }
 ?>
+
 
 
 </body>
