@@ -77,12 +77,12 @@
 </style>
 </head>
 <body>
-      <h1>APPLICATION FOR JOBS YOU POSTED</h1>
+      <h1>DETAILS OF TOTAL APPLICANTS</h1>
       <?php
       require_once("connect.php");
        session_start();
        $user_id = $_SESSION['user_id'];
-       $sql="SELECT * FROM job_application WHERE provider_id='$user_id'and `application_status`='pending'";
+       $sql="SELECT * FROM job_application WHERE provider_id='$user_id'and `application_status`='approved' or `application_status`='rejected'";
        $data=mysqli_query($conn,$sql);
        if(mysqli_num_rows($data) > 0) 
        {
@@ -91,6 +91,7 @@
             echo "<th>Name of the applicant</th>";
             echo "<th>Job applied</th>";
             echo "<th>Apply date</th>";
+            echo "<th> Status</th>";
             echo "<th>More details</th>";
             echo "</tr>";
             while($row = mysqli_fetch_array($data))
@@ -109,7 +110,8 @@
                     echo"<td>".$row2['full_name']."</td>";
                     echo"<td> ".$row1['job_title']."</td>";
                     echo"<td>".$row['apply_date']."</td>";
-                    echo"<form action='display-requests.php'method='post' target='frame2'>";
+                    echo"<td>".$row['application_status']."</td>";
+                    echo"<form action=''method='post' target='frame2'>";
                     echo"<input type='hidden' name='apply_id'value=".$row['job_apply_id'].">";
                     echo"<input type='hidden' name='seeker_id'value=".$row['user_id'].">";
                     echo "<td><button type='submit' name='details'>View Details</button></td>";
@@ -120,7 +122,7 @@
                echo"</table>";
        }
        else{
-        echo"<script>alert('No pending job request found for this user')</script>";
+        echo"<script>alert('No job request found for this user')</script>";
        }
       if(isset($_POST['details']))
       {
@@ -158,19 +160,7 @@
          <p> Experience <?php echo $row3['experience'];?></p>
          <p>Availability:<?php echo $row3['availabilty']; ?></p>
          <p>applied date: <?php echo $row3['apply_date']; ?></p>
-         <?php 
-       echo "<form action='' method='post' > 
-       <input type='hidden' name='seeker_id' value='".$row3['user_id']."'>
-       <input type='hidden' name='job_apply_id' value='".$row3['job_apply_id']."'> 
-       <label>Application status :</label> 
-       <select name='status' required> 
-       <option value='pending' ".(($row3['application_status'] == 'pending') ? 'selected' : '').">PENDING</option> 
-       <option value='approved' ".(($row3['application_status'] == 'approved') ? 'selected' : '').">APPROVED</option> 
-       <option value='rejected' ".(($row3['application_status'] == 'rejected') ? 'selected' : '').">REJECTED</option> 
-       </select> 
-       <button type='submit' name='confirm'>CONFIRM</button> 
-       </form>";
-?>
+         <p> Application status:<?php echo $row3['application_status']; ?></p>
 </div>
 <?php
         }
@@ -179,34 +169,7 @@
             echo"no data retrieved";
         }
         }
-      if(isset($_POST['confirm']))
-      {
-        $seeker_id=$_POST['seeker_id'];
-        $job_apply_id = $_POST['job_apply_id'];
-        $status=$_POST['status'];
-        $sql3 = "UPDATE `job_application` SET `application_status`='$status' WHERE `job_apply_id`='$job_apply_id'";
-        if($conn->query($sql3)===FALSE){
-          die("error updating value: ".$conn->error);
-      }else
-        {
-          // Create the notification message
-          $message = "";
-          if ($status == 'approved') {
-              $message = "Your job application has been APPROVED!";
-          } elseif ($status == 'rejected') {
-              $message = "Your job application has been REJECTED!";
-          }
-  
-          // Insert notification into the notifications table for the job seeker
-          $sql_notify = "INSERT INTO `notifications` (`user_id`, `message`) VALUES ('$seeker_id', '$message')";
-  
-          if ($conn->query($sql_notify) === FALSE) {
-              die("Error inserting notification: " . $conn->error);
-          }
-  
-          echo "<script>alert('UPDATED SUCCESSFULLY')</script>";
-      }
-      }
+     
       
       ?>
 </body>
